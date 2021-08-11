@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 23:49:40 by cmariot           #+#    #+#             */
-/*   Updated: 2021/08/11 17:25:48 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/08/11 17:42:30 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,9 @@ void	print_stack(int *a, char c, int stack_size)
 {
 	int	i;
 
-	printf("\n --- Stack %c ---\n", c);
+	ft_putstr_fd("\n --- Stack ", 1);
+	ft_putchar_fd(c, 1);
+	ft_putstr_fd(" ---\n", 1);
 	i = 0;
 	while (stack_size--)
 	{
