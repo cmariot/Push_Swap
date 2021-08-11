@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 15:17:34 by cmariot           #+#    #+#             */
-/*   Updated: 2021/08/11 14:35:17 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/08/11 14:52:45 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,6 @@ int	is_sorted(int *a, int stack_size)
 	check_zero = ft_check_zeros(a, stack_size);
 	if (check_zero == 1 && a[0] != 0)
 	{
-		ft_putstr_fd("KO\nThe stack A is not sorted.\n", 1);
 		return (-1);
 	}
 	while (stack_size-- && (a[i + 1] != '\0' ))

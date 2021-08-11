@@ -6,7 +6,7 @@
 #    By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/10 10:00:43 by cmariot           #+#    #+#              #
-#    Updated: 2021/08/11 14:43:07 by cmariot          ###   ########.fr        #
+#    Updated: 2021/08/11 17:13:14 by cmariot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,8 +56,11 @@ checker_compil:	compil_libft ${CHECKER_SRCS_OBJS}
 				${COMPILER} ${COMPILER_FLAGS} ${CHECKER_SRCS_OBJS} -I ${INCLUDES_DIR} -L ${LIBFT_DIR} -lft -o ${CHECKER}
 				@printf "\x1b[32mThe checker is ready.\x1b[0m\n"
 
-checker_leaks:	checker_comp
-				leaks -atExit -- ./${CHECKER_NAME}
+checker_test:	checker_compil
+				./${CHECKER} 1 2 3 4 5
+
+checker_leaks:	checker_compil
+				leaks -atExit -- ./${CHECKER} 1 2 3 4 5
 
 clean:
 				cd libft && make clean
