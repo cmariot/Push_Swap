@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 12:27:24 by cmariot           #+#    #+#             */
-/*   Updated: 2021/08/11 15:37:24 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/08/12 01:08:10 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ void	ra(int *a, int stack_size)
 		a[i] = a[i + 1];
 		i++;
 	}
-	a[i] = tmp;
+	//Problem here when current != inital stack_size
+	a[i - 1] = tmp;
 }
 
 //shift up all elements of stack b by 1.
@@ -42,7 +43,7 @@ void	rb(int *b, int stack_size)
 		b[i] = b[i + 1];
 		i++;
 	}
-	b[i] = tmp;
+	b[i - 1] = tmp;
 }
 
 //ra and rb at the same time.
