@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 15:17:34 by cmariot           #+#    #+#             */
-/*   Updated: 2021/08/11 14:52:45 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/08/12 12:47:44 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	check_duplication(int *a, int stack_size)
 	while (a[i + 1])
 	{
 		j = i + 1;
-		while (a[j])
+		while (j <= stack_size)
 		{
 			if (a[i] == a[j])
 			{
@@ -79,16 +79,25 @@ int	is_sorted(int *a, int stack_size)
 	int	i;
 	int	check_zero;
 
-	i = 0;
 	check_zero = ft_check_zeros(a, stack_size);
-	if (check_zero == 1 && a[0] != 0)
-	{
-		return (-1);
-	}
-	while (stack_size-- && (a[i + 1] != '\0' ))
+	i = 0;
+	while (a[i] < 0)
 	{
 		if (a[i] >= a[i + 1])
 			return (-1);
+		stack_size--;
+		i++;
+	}	
+	if (check_zero == 1 && a[i] != 0)
+	{
+		return (-1);
+	}
+	while ((stack_size-- - 1) && (a[i + 1] != '\0'))
+	{
+		if (a[i] >= a[i + 1])
+		{
+			return (-1);
+		}
 		i++;
 	}
 	return (0);

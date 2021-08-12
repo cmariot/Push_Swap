@@ -1,54 +1,57 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   reverse_stacks.c                                   :+:      :+:    :+:   */
+/*   reverse_reverse_stacks.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 12:27:24 by cmariot           #+#    #+#             */
-/*   Updated: 2021/08/12 01:08:10 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/08/12 12:47:37 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_checker.h"
 
-//shift up all elements of stack a by 1.
-//1 2 3 4 5 -> 2 3 4 5 1
-void	ra(int *a, int stack_size)
+//shift down all elements of stack a by 1.
+//1 2 3 4 5 -> 5 1 2 3 4
+void	rra(int *a, t_stack *stacks)
 {
 	int	i;
-	int	tmp;
+	int	backup;
 
-	i = 0;
-	tmp = a[0];
-	while (stack_size--)
+	if (stacks->a_size < 2)
+		return ;
+	i = stacks->a_size - 1;
+	backup = a[i];
+	while (i != 0)
 	{
-		a[i] = a[i + 1];
-		i++;
+		a[i] = a[i - 1];
+		i--;
 	}
-	//Problem here when current != inital stack_size
-	a[i - 1] = tmp;
+	a[0] = backup;
 }
 
-//shift up all elements of stack b by 1.
-void	rb(int *b, int stack_size)
+//shift down all elements of stack b by 1.
+void	rrb(int *b, t_stack *stacks)
 {
 	int	i;
-	int	tmp;
+	int	backup;
 
-	i = 0;
-	tmp = b[0];
-	while (stack_size--)
+	if (stacks->b_size < 2)
+		return ;
+	i = stacks->b_size - 1;
+	backup = b[i];
+	while (i != 0)
 	{
-		b[i] = b[i + 1];
-		i++;
+		b[i] = b[i - 1];
+		i--;
 	}
-	b[i - 1] = tmp;
+	b[0] = backup;
 }
 
-//ra and rb at the same time.
-void	rr(int *a, int *b, int stack_size)
+//rra and rrb at the same time.
+void	rrr(int *a, int *b, t_stack *stacks)
 {
-	ra(a, stack_size);
-	rb(b, stack_size);
+	rra(a, stacks);
+	rrb(b, stacks);
 }
