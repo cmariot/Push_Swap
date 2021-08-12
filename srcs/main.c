@@ -6,33 +6,46 @@
 /*   By: cmariot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 14:53:13 by cmariot           #+#    #+#             */
-/*   Updated: 2021/08/12 19:00:49 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/08/12 21:18:14 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+void	sort_stack(int *a, int *b, int stack_size)
+{
+	t_stack	*stacks;
+
+	stacks = malloc(sizeof(t_stack));
+	if (!stacks)
+		return ;
+	stacks->a_size = stack_size;
+	stacks->b_size = 0;
+	if (stack_size == 2)
+		ft_putstr("ra\n");
+	a[0] = 0;
+	b[0] = 0;
+	free(stacks);
+}
+
 int	main(int argc, char **argv)
 {
-	int		stack_size;
 	int		*a;
 	int		*b;
+	int		stack_size;
 
 	if (argc == 1)
 		return (0);
 	stack_size = (argc - 1);
 	a = malloc(sizeof(int) * stack_size);
+	if (!a)
+		return (-1);
 	b = malloc(sizeof(int) * stack_size);
-	if (!a || !b)
+	if (!b)
 		return (-1);
 	if (ft_put_in_stack(a, b, stack_size, argv) == 1)
-	{
 		if (is_sorted(a, stack_size) == -1)
-		{
-			ft_putstack(a, 'A', stack_size);
-			ft_putstack(b, 'B', stack_size);
-		}
-	}
+			sort_stack(a, b, stack_size);
 	free(a);
 	free(b);
 	return (0);

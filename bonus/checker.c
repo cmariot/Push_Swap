@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 23:49:40 by cmariot           #+#    #+#             */
-/*   Updated: 2021/08/12 18:41:33 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/08/12 21:54:52 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,13 @@ int	get_instructions(int *a, int *b, int stack_size)
 	stacks->b_size = 0;
 	while (1)
 	{
-		instruction = get_next_line(1);
-		if (!instruction)
+		instruction = get_next_line(0);
+		if (instruction == NULL)
 			break ;
 		if (do_instruction(instruction, a, b, stacks) == -1)
 		{
 			ft_putstr_fd("Error\n", 2);
+			free(instruction);
 			return (-1);
 		}
 		free(instruction);
