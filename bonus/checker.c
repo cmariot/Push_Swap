@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 23:49:40 by cmariot           #+#    #+#             */
-/*   Updated: 2021/08/12 16:08:07 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/08/12 18:41:33 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,38 @@ int	get_instructions(int *a, int *b, int stack_size)
 			break ;
 		if (do_instruction(instruction, a, b, stacks) == -1)
 		{
-			ft_putstr_fd("Error\nInvalid instruction.\n", 2);
+			ft_putstr_fd("Error\n", 2);
 			return (-1);
 		}
 		free(instruction);
 	}
 	free(stacks);
+	return (0);
+}
+
+int	ft_atoi_check(char *str, int *a, int j)
+{
+	int		i;
+	size_t	len;
+
+	i = 0;
+	len = ft_strlen(str);
+	if (str[i] == '+' || str[i] == '-')
+	{
+		if (str[i] == '+')
+			len--;
+		i++;
+		if (ft_isdigit(str[i]) == 0)
+			return (-1);
+	}
+	a[j] = ft_atoi(str);
+	while (str[i])
+		if (ft_isdigit(str[i++]) == 0)
+			return (-1);
+	if (len != ft_intlen(a[j]))
+	{
+		return (-1);
+	}
 	return (0);
 }
 
@@ -72,74 +98,16 @@ int	ft_put_in_stack(int *a, int *b, int stack_size, char **argv)
 	i = 0;
 	while (stack_size - i)
 	{
-		if (*argv[i + 1] == '\0')
+		if (ft_atoi_check(argv[i + 1], a, i) == -1)
 		{
-			ft_putstr_fd("Error\nNULL argument.\n", 2);
+			ft_putstr_fd("Error\n", 2);
 			return (-1);
 		}
-		a[i] = ft_atoi(argv[i + 1]);
 		b[i] = 0;
-		if (ft_strlen(argv[i + 1]) != ft_intlen(a[i]) && *argv[i + 1] != '0')
-		{
-			ft_putstr_fd("Error\nInvalid argument.\n", 2);
-			return (-1);
-		}
 		i++;
 	}
-	if (check_duplication(a, stack_size) != -1)
+	if (check_duplication(a, stack_size) == 0)
 		return (1);
-	ft_putstr_fd("Error\nDuplication.\n", 2);
+	ft_putstr_fd("Error\n", 2);
 	return (-1);
-}
-
-void	print_stack(int *a, char c, int stack_size)
-{
-	int	i;
-	int	len;
-
-	ft_putstr_fd("\n --- Stack ", 1);
-	ft_putchar_fd(c, 1);
-	ft_putstr_fd(" ---\n", 1);
-	i = 0;
-	len = 0;
-	while (stack_size--)
-	{
-		ft_putchar_fd(c, 1);
-		ft_putchar_fd('[', 1);
-		ft_putnbr_fd(i, 1);
-		ft_putstr_fd("] = ", 1);
-		len = ft_intlen(a[i]);
-		while (len++ != 11)
-			ft_putchar_fd(' ', 1);
-		ft_putnbr_fd(a[i], 1);
-		ft_putchar_fd('\n', 1);
-		i++;
-	}
-}
-
-int	main(int argc, char **argv)
-{
-	int		stack_size;
-	int		*a;
-	int		*b;
-
-	if (argc == 1)
-		return (0);
-	stack_size = (argc - 1);
-	a = malloc(sizeof(int) * stack_size);
-	b = malloc(sizeof(int) * stack_size);
-	if (!a || !b)
-		return (-1);
-	if (ft_put_in_stack(a, b, stack_size, argv) == 1)
-	{
-		if (get_instructions(a, b, stack_size) != -1)
-		{
-			check_stacks(a, b, stack_size);
-			print_stack(a, 'a', stack_size);
-			print_stack(b, 'b', stack_size);
-		}
-	}
-	free(a);
-	free(b);
-	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 13:34:23 by cmariot           #+#    #+#             */
-/*   Updated: 2021/08/12 14:39:53 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/08/12 18:06:47 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void		*ft_memmove(void *dst, const void *src, size_t len);
 void		ft_putchar_fd(char c, int fd);
 void		ft_putendl_fd(char *s, int fd);
 void		ft_putnbr_fd(int n, int fd);
+void		ft_putstack(int *a, char c, int stack_size);
 void		ft_putstr_fd(char *s, int fd);
 char		**ft_split(char const *s, char c);
 char		*ft_strchr(const char *s, int c);

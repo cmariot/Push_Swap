@@ -6,7 +6,7 @@
 #    By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/10 10:00:43 by cmariot           #+#    #+#              #
-#    Updated: 2021/08/12 16:06:12 by cmariot          ###   ########.fr        #
+#    Updated: 2021/08/12 18:45:15 by cmariot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,13 @@ PROGRAM = push_swap
 
 PROGRAM_DIR = srcs
 
-PROGRAM_SRCS = ${PROGRAM_DIR}/main.c
+PROGRAM_SRCS = ${PROGRAM_DIR}/main.c \
+			   ${CHECKER_DIR}/checker.c \
+			   ${CHECKER_DIR}/swap_stacks.c \
+			   ${CHECKER_DIR}/push_stacks.c \
+			   ${CHECKER_DIR}/rotate_stacks.c \
+			   ${CHECKER_DIR}/reverse_rotate_stacks.c \
+			   ${CHECKER_DIR}/check_stacks.c
 
 PROGRAM_SRCS_OBJS = ${PROGRAM_SRCS:.c=.o}
 
@@ -22,7 +28,8 @@ CHECKER = checker
 
 CHECKER_DIR = bonus
 
-CHECKER_SRCS = ${CHECKER_DIR}/main_checker.c \
+CHECKER_SRCS = ${CHECKER_DIR}/main.c \
+			   ${CHECKER_DIR}/checker.c \
 			   ${CHECKER_DIR}/swap_stacks.c \
 			   ${CHECKER_DIR}/push_stacks.c \
 			   ${CHECKER_DIR}/rotate_stacks.c \

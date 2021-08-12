@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 09:31:09 by cmariot           #+#    #+#             */
-/*   Updated: 2021/08/12 14:37:23 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/08/12 16:39:43 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PUSH_SWAP_CHECKER_H
 
 # include "libft.h"
+# include <stdio.h>
 
 typedef struct s_stack
 {
