@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 23:49:40 by cmariot           #+#    #+#             */
-/*   Updated: 2021/08/12 13:00:48 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/08/12 14:36:44 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,18 +62,15 @@ int	get_instructions(int *a, int *b, int stack_size)
 		free(instruction);
 	}
 	free(stacks);
-	return (instruction_number);
+	return (0);
 }
 
-//Simplifier f()
 int	ft_put_in_stack(int *a, int *b, int stack_size, char **argv)
 {
 	int	i;
-	int	size;
 
 	i = 0;
-	size = stack_size;
-	while (stack_size--)
+	while (stack_size - i)
 	{
 		if (*argv[i + 1] == '\0')
 		{
@@ -82,19 +79,15 @@ int	ft_put_in_stack(int *a, int *b, int stack_size, char **argv)
 		}
 		a[i] = ft_atoi(argv[i + 1]);
 		b[i] = 0;
-		//A verifier
-		if (ft_strlen(argv[i + 1]) != ft_intlen(a[i]))
+		if (ft_strlen(argv[i + 1]) != ft_intlen(a[i]) && *argv[i + 1] != '0')
 		{
-			if (*argv[i + 1] != '0')
-			{
-				ft_putstr_fd("Error\nInvalid argument.\n", 2);
-				return (-1);
-			}
+			ft_putstr_fd("Error\nInvalid argument.\n", 2);
+			return (-1);
 		}
 		i++;
 	}
-	if (check_duplication(a, size) != -1)
-		return (0);
+	if (check_duplication(a, stack_size) != -1)
+		return (1);
 	ft_putstr_fd("Error\nDuplication.\n", 2);
 	return (-1);
 }
@@ -102,19 +95,28 @@ int	ft_put_in_stack(int *a, int *b, int stack_size, char **argv)
 void	print_stack(int *a, char c, int stack_size)
 {
 	int	i;
+	int	len;
 
 	ft_putstr_fd("\n --- Stack ", 1);
 	ft_putchar_fd(c, 1);
 	ft_putstr_fd(" ---\n", 1);
 	i = 0;
+	len = 0;
 	while (stack_size--)
 	{
-		printf("%c[%d] = %10d\n", c, i, a[i]);
+		ft_putchar_fd(c, 1);
+		ft_putchar_fd('[', 1);
+		ft_putnbr_fd(i, 1);
+		ft_putstr_fd("] = ", 1);
+		len = ft_intlen(a[i]);
+		while (len++ != 11)
+			ft_putchar_fd(' ', 1);
+		ft_putnbr_fd(a[i], 1);
+		ft_putchar_fd('\n', 1);
 		i++;
 	}
 }
 
-//Check if the instruction we give to the stack sort it.
 int	main(int argc, char **argv)
 {
 	int		stack_size;

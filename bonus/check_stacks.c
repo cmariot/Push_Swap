@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 15:17:34 by cmariot           #+#    #+#             */
-/*   Updated: 2021/08/12 12:47:44 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/08/12 14:21:12 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,15 +110,15 @@ int	check_stacks(int *a, int *b, int stack_size)
 	size = stack_size;
 	if (is_empty(b, stack_size) == -1)
 	{
-		ft_putstr_fd("KO\nThe stack B is not empty.\n", 1);
+		ft_putstr_fd("\nKO\nThe stack B is not empty.\n", 1);
 	}
 	else if (is_sorted(a, size) == -1)
 	{
-		ft_putstr_fd("KO\nThe stack A is not sorted.\n", 1);
+		ft_putstr_fd("\nKO\nThe stack A is not sorted.\n", 1);
 	}
 	else
 	{
-		ft_putstr_fd("OK\n", 1);
+		ft_putstr_fd("\nOK\n", 1);
 	}
 	return (0);
 }

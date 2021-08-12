@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 11:07:53 by cmariot           #+#    #+#             */
-/*   Updated: 2021/08/10 11:14:59 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/08/12 14:32:33 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ size_t	ft_intlen(int n)
 {
 	int	n_len;
 
+	if (n == 0)
+		return (1);
 	n_len = 0;
 	if (n < 0)
 		n_len++;

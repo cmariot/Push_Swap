@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 13:34:23 by cmariot           #+#    #+#             */
-/*   Updated: 2021/08/12 12:49:53 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/08/12 14:39:53 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,11 @@ typedef struct s_list
 
 }				t_list;
 
+/* LIBFT */
 int			ft_atoi(const char *str);
 void		ft_bzero(void *b, size_t n);
 void		*ft_calloc(size_t count, size_t size);
+size_t		ft_intlen(int n);
 int			ft_isalnum(int c);
 int			ft_isalpha(int c);
 int			ft_isascii(int c);
@@ -70,10 +72,11 @@ char		*ft_strtrim(char const *s1, char const *set);
 char		*ft_substr(char const *s, unsigned int start, size_t len);
 int			ft_tolower(int c);
 int			ft_toupper(int c);
+
+/* GET NEXT LINE */
 char		*get_next_line(int fd);
 void		ft_add_buf_to_str(char **str, void *buf);
 char		*ft_strdel(char **adr_str);
 char		*gnl_outpout(ssize_t read_return, char **str_input);
-size_t		ft_intlen(int n);
 
 #endif
