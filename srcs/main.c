@@ -3,65 +3,60 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cmariot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/09 23:49:40 by cmariot           #+#    #+#             */
-/*   Updated: 2021/08/12 16:08:07 by cmariot          ###   ########.fr       */
+/*   Created: 2021/08/12 14:53:13 by cmariot           #+#    #+#             */
+/*   Updated: 2021/08/12 16:08:27 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap_checker.h"
+#include "push_swap.h"
 
-int	do_instruction(char *instr, int *a, int *b, t_stack *stacks)
+int	ft_check_zeros(int *a, int stack_size)
 {
-	if (ft_strncmp(instr, "sa", (ft_strlen(instr) - 1)) == 0)
-		sa(a, stacks);
-	else if (ft_strncmp(instr, "sb", (ft_strlen(instr) - 1)) == 0)
-		sb(b, stacks);
-	else if (ft_strncmp(instr, "ss", (ft_strlen(instr) - 1)) == 0)
-		ss(a, b, stacks);
-	else if (ft_strncmp(instr, "pa", (ft_strlen(instr) - 1)) == 0)
-		pa(a, b, stacks);
-	else if (ft_strncmp(instr, "pb", (ft_strlen(instr) - 1)) == 0)
-		pb(a, b, stacks);
-	else if (ft_strncmp(instr, "ra", (ft_strlen(instr) - 1)) == 0)
-		ra(a, stacks);
-	else if (ft_strncmp(instr, "rb", (ft_strlen(instr) - 1)) == 0)
-		rb(b, stacks);
-	else if (ft_strncmp(instr, "rr", (ft_strlen(instr) - 1)) == 0)
-		rr(a, b, stacks);
-	else if (ft_strncmp(instr, "rra", (ft_strlen(instr) - 1)) == 0)
-		rra(a, stacks);
-	else if (ft_strncmp(instr, "rrb", (ft_strlen(instr) - 1)) == 0)
-		rrb(b, stacks);
-	else if (ft_strncmp(instr, "rrr", (ft_strlen(instr) - 1)) == 0)
-		rrr(a, b, stacks);
-	else
+	int	i;
+	int	zero;
+
+	zero = 0;
+	i = 0;
+	while (stack_size--)
+	{
+		if (a[i] == 0)
+			zero++;
+		i++;
+	}
+	if (zero > 1)
+	{
 		return (-1);
-	return (0);
+	}
+	return (zero);
 }
 
-int	get_instructions(int *a, int *b, int stack_size)
+int	check_duplication(int *a, int stack_size)
 {
-	char	*instruction;
-	t_stack	*stacks;
+	int	i;
+	int	j;
+	int	zero;
 
-	stacks = malloc(sizeof(t_stack));
-	stacks->a_size = stack_size;
-	stacks->b_size = 0;
-	while (1)
+	i = 0;
+	zero = ft_check_zeros(a, stack_size);
+	if (zero > 1 || zero == -1)
 	{
-		instruction = get_next_line(1);
-		if (!instruction)
-			break ;
-		if (do_instruction(instruction, a, b, stacks) == -1)
-		{
-			ft_putstr_fd("Error\nInvalid instruction.\n", 2);
-			return (-1);
-		}
-		free(instruction);
+		return (-1);
 	}
-	free(stacks);
+	while (a[i + 1])
+	{
+		j = i + 1;
+		while (j <= stack_size)
+		{
+			if (a[i] == a[j])
+			{
+				return (-1);
+			}
+			j++;
+		}
+		i++;
+	}
 	return (0);
 }
 
@@ -132,12 +127,8 @@ int	main(int argc, char **argv)
 		return (-1);
 	if (ft_put_in_stack(a, b, stack_size, argv) == 1)
 	{
-		if (get_instructions(a, b, stack_size) != -1)
-		{
-			check_stacks(a, b, stack_size);
-			print_stack(a, 'a', stack_size);
-			print_stack(b, 'b', stack_size);
-		}
+		print_stack(a, 'a', stack_size);
+		print_stack(b, 'b', stack_size);
 	}
 	free(a);
 	free(b);

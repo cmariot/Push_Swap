@@ -6,21 +6,21 @@
 #    By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/10 10:00:43 by cmariot           #+#    #+#              #
-#    Updated: 2021/08/12 12:47:50 by cmariot          ###   ########.fr        #
+#    Updated: 2021/08/12 16:06:12 by cmariot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+PROGRAM = push_swap
+
+PROGRAM_DIR = srcs
+
+PROGRAM_SRCS = ${PROGRAM_DIR}/main.c
+
+PROGRAM_SRCS_OBJS = ${PROGRAM_SRCS:.c=.o}
 
 CHECKER = checker
 
 CHECKER_DIR = bonus
-
-COMPILER = gcc
-
-COMPILER_FLAGS = -Wall -Wextra -Werror
-
-INCLUDES_DIR = includes
-
-LIBFT_DIR = libft
 
 CHECKER_SRCS = ${CHECKER_DIR}/main_checker.c \
 			   ${CHECKER_DIR}/swap_stacks.c \
@@ -31,20 +31,28 @@ CHECKER_SRCS = ${CHECKER_DIR}/main_checker.c \
 
 CHECKER_SRCS_OBJS = ${CHECKER_SRCS:.c=.o}
 
+INCLUDES_DIR = includes
+
+LIBFT_DIR = libft
+
 LIBFT_LIB = libft/libft.a
 
-REMOVE = rm -rf
+COMPILER = gcc
 
-MAIN = main.c
+COMPILER_FLAGS = -Wall -Wextra -Werror
+
+REMOVE = rm -rf
 
 .c.o:
 				${COMPILER} ${COMPILER_FLAGS} -c $< -o ${<:.c=.o} -I ${INCLUDES_DIR} -I ${LIBFT_DIR}
 
+${PROGRAM}:		program_compil
+
 ${CHECKER}:		checker_compil
 
-all: 			checker_compil
+all: 			program_compil checker_compil
 
-bonus:			checker_compil
+bonus:			program_compil checker_compil
 
 norme:
 				norminette ./srcs ./includes ./libft ./bonus
@@ -52,6 +60,16 @@ norme:
 
 compil_libft:
 				cd ${LIBFT_DIR} && make
+
+program_compil: compil_libft ${PROGRAM_SRCS_OBJS}
+				${COMPILER} ${COMPILER_FLAGS} ${PROGRAM_SRCS_OBJS} -I ${INCLUDES_DIR} -L ${LIBFT_DIR} -lft -o ${PROGRAM}
+				@printf "\x1b[32mpush_swap is ready.\x1b[0m\n"
+
+test:			program_compil
+				./${PROGRAM} 1 2
+
+program_leaks:	program_compil
+				leaks -atExit -- ./${PROGRAM} 1 2 3 4 5
 
 checker_compil:	compil_libft ${CHECKER_SRCS_OBJS}
 				${COMPILER} ${COMPILER_FLAGS} ${CHECKER_SRCS_OBJS} -I ${INCLUDES_DIR} -L ${LIBFT_DIR} -lft -o ${CHECKER}
@@ -65,16 +83,18 @@ checker_leaks:	checker_compil
 
 clean:
 				cd libft && make clean
+				${REMOVE} ${PROGRAM_SRCS_OBJS}
 				${REMOVE} ${CHECKER_SRCS_OBJS}
 				@printf "\x1b[32mThe object files have been deleted\x1b[0m\n"
 
 fclean:			
 				cd libft && make fclean
+				${REMOVE} ${PROGRAM_SRCS_OBJS}
 				${REMOVE} ${CHECKER_SRCS_OBJS}
+				${REMOVE} ${PROGRAM}
 				${REMOVE} ${CHECKER}
 				@printf "\x1b[32mThe object and binary files have been deleted\x1b[0m\n"
 
 re:				fclean all
 
 .PHONY:			clean fclean
-
