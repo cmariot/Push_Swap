@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 18:40:40 by cmariot           #+#    #+#             */
-/*   Updated: 2021/08/13 10:04:13 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/08/13 10:26:08 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,16 @@ void	parse_argv(char *str)
 	int		*b;
 
 	arr = ft_split(str, ' ');
+	if (arr == NULL)
+		return ;
 	stack_size = 0;
 	while (arr[stack_size])
 		stack_size++;
 	a = malloc(sizeof(int) * stack_size);
+	if (!a)
+		return ;
 	b = malloc(sizeof(int) * stack_size);
-	if (!a || !b)
+	if (!b)
 		return ;
 	if (ft_put_in_stack(a, b, arr, -1) == 1)
 		if (get_instructions(a, b, stack_size) != -1)
@@ -49,8 +53,10 @@ int	main(int argc, char **argv)
 	{
 		stack_size = (argc - 1);
 		a = malloc(sizeof(int) * stack_size);
+		if (!a)
+			return (-1);
 		b = malloc(sizeof(int) * stack_size);
-		if (!a || !b)
+		if (!b)
 			return (-1);
 		if (ft_put_in_stack(a, b, argv, 0) == 1)
 			if (get_instructions(a, b, stack_size) != -1)
