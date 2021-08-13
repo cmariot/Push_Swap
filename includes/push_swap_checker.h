@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 09:31:09 by cmariot           #+#    #+#             */
-/*   Updated: 2021/08/12 16:39:43 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/08/13 10:05:09 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ typedef struct s_stack
 }	t_stack;
 
 int		main(int argc, char **argv);
-int		ft_put_in_stack(int *a, int *b, int stack_size, char **argv);
+int		ft_put_in_stack(int *a, int *b, char **argv, int i);
 int		get_instructions(int *a, int *b, int stack_size);
 int		do_instruction(char *instr, int *a, int *b, t_stack *stacks);
 void	print_stack(int *a, char c, int stack_size);

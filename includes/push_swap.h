@@ -6,7 +6,7 @@
 /*   By: cmariot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:24:02 by cmariot           #+#    #+#             */
-/*   Updated: 2021/08/12 16:08:00 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/08/13 10:04:55 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include "push_swap_checker.h"
 
 int		main(int argc, char **argv);
-int		ft_put_in_stack(int *a, int *b, int stack_size, char **argv);
+int		ft_put_in_stack(int *a, int *b, char **argv, int i);
 void	print_stack(int *a, char c, int stack_size);
 void	sa(int *a, t_stack *stacks);
 void	sb(int *b, t_stack *stacks);

@@ -6,7 +6,7 @@
 /*   By: cmariot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 14:53:13 by cmariot           #+#    #+#             */
-/*   Updated: 2021/08/12 21:18:14 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/08/13 10:04:33 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	main(int argc, char **argv)
 	b = malloc(sizeof(int) * stack_size);
 	if (!b)
 		return (-1);
-	if (ft_put_in_stack(a, b, stack_size, argv) == 1)
+	if (ft_put_in_stack(a, b, argv, 0) == 1)
 		if (is_sorted(a, stack_size) == -1)
 			sort_stack(a, b, stack_size);
 	free(a);

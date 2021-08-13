@@ -6,11 +6,34 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 18:40:40 by cmariot           #+#    #+#             */
-/*   Updated: 2021/08/12 21:08:32 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/08/13 10:04:13 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_checker.h"
+
+void	parse_argv(char *str)
+{
+	char	**arr;
+	int		stack_size;
+	int		*a;
+	int		*b;
+
+	arr = ft_split(str, ' ');
+	stack_size = 0;
+	while (arr[stack_size])
+		stack_size++;
+	a = malloc(sizeof(int) * stack_size);
+	b = malloc(sizeof(int) * stack_size);
+	if (!a || !b)
+		return ;
+	if (ft_put_in_stack(a, b, arr, -1) == 1)
+		if (get_instructions(a, b, stack_size) != -1)
+			check_stacks(a, b, stack_size);
+	free(a);
+	free(b);
+	free(arr);
+}
 
 int	main(int argc, char **argv)
 {
@@ -20,17 +43,20 @@ int	main(int argc, char **argv)
 
 	if (argc == 1)
 		return (0);
-	stack_size = (argc - 1);
-	a = malloc(sizeof(int) * stack_size);
-	b = malloc(sizeof(int) * stack_size);
-	if (!a || !b)
-		return (-1);
-	if (ft_put_in_stack(a, b, stack_size, argv) == 1)
-		if (get_instructions(a, b, stack_size) != -1)
-			check_stacks(a, b, stack_size);
-	ft_putstack(a, 'A', stack_size);
-	ft_putstack(b, 'B', stack_size);
-	free(a);
-	free(b);
+	else if (argc == 2)
+		parse_argv(argv[1]);
+	else
+	{
+		stack_size = (argc - 1);
+		a = malloc(sizeof(int) * stack_size);
+		b = malloc(sizeof(int) * stack_size);
+		if (!a || !b)
+			return (-1);
+		if (ft_put_in_stack(a, b, argv, 0) == 1)
+			if (get_instructions(a, b, stack_size) != -1)
+				check_stacks(a, b, stack_size);
+		free(a);
+		free(b);
+	}
 	return (0);
 }

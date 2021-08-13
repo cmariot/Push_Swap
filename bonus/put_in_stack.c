@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   put_in_stack.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 23:49:40 by cmariot           #+#    #+#             */
-/*   Updated: 2021/08/12 21:54:52 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/08/13 10:05:56 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,20 +92,25 @@ int	ft_atoi_check(char *str, int *a, int j)
 	return (0);
 }
 
-int	ft_put_in_stack(int *a, int *b, int stack_size, char **argv)
+int	ft_put_in_stack(int *a, int *b, char **argv, int j)
 {
 	int	i;
+	int	stack_size;
 
 	i = 0;
+	stack_size = 0;
+	while (argv[stack_size])
+		stack_size++;
 	while (stack_size - i)
 	{
-		if (ft_atoi_check(argv[i + 1], a, i) == -1)
+		if (ft_atoi_check(argv[j + 1], a, i) == -1)
 		{
 			ft_putstr_fd("Error\n", 2);
 			return (-1);
 		}
 		b[i] = 0;
 		i++;
+		j++;
 	}
 	if (check_duplication(a, stack_size) == 0)
 		return (1);
