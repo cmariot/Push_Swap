@@ -6,14 +6,14 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 12:27:24 by cmariot           #+#    #+#             */
-/*   Updated: 2021/08/13 12:16:49 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/08/13 12:09:07 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap_checker.h"
+#include "push_swap.h"
 
 //swap the first 2 elements at the top of stack a.
-void	sa_checker(int *a, t_stack *stacks)
+void	sa(int *a, t_stack *stacks)
 {
 	int	tmp;
 
@@ -22,10 +22,11 @@ void	sa_checker(int *a, t_stack *stacks)
 	tmp = a[0];
 	a[0] = a[1];
 	a[1] = tmp;
+	ft_putstr("sa\n");
 }
 
 //swap the first 2 elements at the top of stack b.
-void	sb_checker(int *b, t_stack *stacks)
+void	sb(int *b, t_stack *stacks)
 {
 	int	tmp;
 
@@ -34,11 +35,13 @@ void	sb_checker(int *b, t_stack *stacks)
 	tmp = b[0];
 	b[0] = b[1];
 	b[1] = tmp;
+	ft_putstr("sb\n");
 }
 
 //sa and sb at the same time.
-void	ss_checker(int *a, int *b, t_stack *stacks)
+void	ss(int *a, int *b, t_stack *stacks)
 {
-	sa_checker(a, stacks);
-	sb_checker(b, stacks);
+	sa(a, stacks);
+	sb(b, stacks);
+	ft_putstr("ss\n");
 }

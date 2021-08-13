@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 12:27:24 by cmariot           #+#    #+#             */
-/*   Updated: 2021/08/12 20:55:21 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/08/13 12:17:30 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 //shift down all elements of stack a by 1.
 //1 2 3 4 5 -> 5 1 2 3 4
-void	rra(int *a, t_stack *stacks)
+void	rra_checker(int *a, t_stack *stacks)
 {
 	int	i;
 	int	backup;
@@ -32,7 +32,7 @@ void	rra(int *a, t_stack *stacks)
 }
 
 //shift down all elements of stack b by 1.
-void	rrb(int *b, t_stack *stacks)
+void	rrb_checker(int *b, t_stack *stacks)
 {
 	int	i;
 	int	backup;
@@ -50,8 +50,8 @@ void	rrb(int *b, t_stack *stacks)
 }
 
 //rra and rrb at the same time.
-void	rrr(int *a, int *b, t_stack *stacks)
+void	rrr_checker(int *a, int *b, t_stack *stacks)
 {
-	rra(a, stacks);
-	rrb(b, stacks);
+	rra_checker(a, stacks);
+	rrb_checker(b, stacks);
 }

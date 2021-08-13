@@ -6,14 +6,14 @@
 /*   By: cmariot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 11:51:26 by cmariot           #+#    #+#             */
-/*   Updated: 2021/08/13 12:20:05 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/08/13 12:06:11 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap_checker.h"
+#include "push_swap.h"
 
 //take the first element at the top of b and put it at the top of a.
-void	pa_checker(int *a, int *b, t_stack *stacks)
+void	pa(int *a, int *b, t_stack *stacks)
 {
 	int	backup;
 	int	i;
@@ -32,18 +32,18 @@ void	pa_checker(int *a, int *b, t_stack *stacks)
 	b[i - 1] = 0;
 	i = 0;
 	j = stacks->a_size;
-	while (stacks->a_size - i)
+	while (stacks->a_size - i++)
 	{
 		a[j] = a[j - 1];
-		i++;
 		j--;
 	}
 	a[0] = backup;
 	stacks->a_size++;
+	ft_putstr("pa\n");
 }
 
 //take the first element at the top of a and put it at the top of b.
-void	pb_checker(int *a, int *b, t_stack *stacks)
+void	pb(int *a, int *b, t_stack *stacks)
 {
 	int	backup;
 	int	i;
@@ -62,12 +62,12 @@ void	pb_checker(int *a, int *b, t_stack *stacks)
 	a[i - 1] = 0;
 	i = 0;
 	j = stacks->b_size;
-	while (stacks->b_size - i)
+	while (stacks->b_size - i++)
 	{
 		b[j] = b[j - 1];
-		i++;
 		j--;
 	}
 	b[0] = backup;
 	stacks->b_size++;
+	ft_putstr("pb\n");
 }

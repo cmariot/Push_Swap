@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 23:49:40 by cmariot           #+#    #+#             */
-/*   Updated: 2021/08/13 10:49:11 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/08/13 12:14:04 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,27 +15,27 @@
 int	do_instruction(char *instr, int *a, int *b, t_stack *stacks)
 {
 	if (ft_strncmp(instr, "sa", (ft_strlen(instr) - 1)) == 0)
-		sa(a, stacks);
+		sa_checker(a, stacks);
 	else if (ft_strncmp(instr, "sb", (ft_strlen(instr) - 1)) == 0)
-		sb(b, stacks);
+		sb_checker(b, stacks);
 	else if (ft_strncmp(instr, "ss", (ft_strlen(instr) - 1)) == 0)
-		ss(a, b, stacks);
+		ss_checker(a, b, stacks);
 	else if (ft_strncmp(instr, "pa", (ft_strlen(instr) - 1)) == 0)
-		pa(a, b, stacks);
+		pa_checker(a, b, stacks);
 	else if (ft_strncmp(instr, "pb", (ft_strlen(instr) - 1)) == 0)
-		pb(a, b, stacks);
+		pb_checker(a, b, stacks);
 	else if (ft_strncmp(instr, "ra", (ft_strlen(instr) - 1)) == 0)
-		ra(a, stacks);
+		ra_checker(a, stacks);
 	else if (ft_strncmp(instr, "rb", (ft_strlen(instr) - 1)) == 0)
-		rb(b, stacks);
+		rb_checker(b, stacks);
 	else if (ft_strncmp(instr, "rr", (ft_strlen(instr) - 1)) == 0)
-		rr(a, b, stacks);
+		rr_checker(a, b, stacks);
 	else if (ft_strncmp(instr, "rra", (ft_strlen(instr) - 1)) == 0)
-		rra(a, stacks);
+		rra_checker(a, stacks);
 	else if (ft_strncmp(instr, "rrb", (ft_strlen(instr) - 1)) == 0)
-		rrb(b, stacks);
+		rrb_checker(b, stacks);
 	else if (ft_strncmp(instr, "rrr", (ft_strlen(instr) - 1)) == 0)
-		rrr(a, b, stacks);
+		rrr_checker(a, b, stacks);
 	else
 		return (-1);
 	return (0);

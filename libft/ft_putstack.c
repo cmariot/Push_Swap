@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 18:04:41 by cmariot           #+#    #+#             */
-/*   Updated: 2021/08/12 18:16:23 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/08/13 12:27:29 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	ft_putstack(int *a, char c, int stack_size)
 	ft_putstr_fd("\n --- Stack ", 1);
 	ft_putchar_fd(c, 1);
 	ft_putstr_fd(" ---\n", 1);
+	if (stack_size == 0)
+		ft_putstr("Empty.\n");
 	i = 0;
 	len = 0;
 	while (stack_size--)

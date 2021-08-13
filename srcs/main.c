@@ -3,14 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmariot <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/12 14:53:13 by cmariot           #+#    #+#             */
-/*   Updated: 2021/08/13 10:25:12 by cmariot          ###   ########.fr       */
+/*   Created: 2021/08/13 11:32:56 by cmariot           #+#    #+#             */
+/*   Updated: 2021/08/13 12:29:21 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	sort_small_stacks(int *a, int *b, t_stack *stacks)
+{
+	if (stacks->a_size == 2)
+		ra(a, stacks);
+	if (stacks->a_size == 3)
+	{
+	}
+	ft_putstack(a, 'A', stacks->a_size);
+	ft_putstack(b, 'B', stacks->b_size);
+}
 
 void	sort_stack(int *a, int *b, int stack_size)
 {
@@ -21,10 +32,8 @@ void	sort_stack(int *a, int *b, int stack_size)
 		return ;
 	stacks->a_size = stack_size;
 	stacks->b_size = 0;
-	if (stack_size == 2)
-		ft_putstr("ra\n");
-	a[0] = 0;
-	b[0] = 0;
+	if (stack_size <= 5)
+		sort_small_stacks(a, b, stacks);
 	free(stacks);
 }
 
