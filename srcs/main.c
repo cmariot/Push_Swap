@@ -6,21 +6,46 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 11:32:56 by cmariot           #+#    #+#             */
-/*   Updated: 2021/08/13 12:29:21 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/08/14 20:55:35 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_small_stacks(int *a, int *b, t_stack *stacks)
+void	choose_algorithm(int *a, int *b, t_stack *stacks)
 {
 	if (stacks->a_size == 2)
 		ra(a, stacks);
 	if (stacks->a_size == 3)
 	{
+		if (a[0] > a[1])
+		{
+			if (a[2] > a[0])
+				sa(a, stacks);
+			else if (a[2] > a[1])
+				ra(a, stacks);
+			else
+			{
+				sa(a, stacks);
+				rra(a, stacks);
+			}
+		}
+		else
+		{
+			if (a[2] > a[0])
+			{
+				ra(a, stacks);
+				sa(a, stacks);
+			}
+			else
+			{
+				rra(a, stacks);
+			}
+		}
+		b[0] = 0;
 	}
-	ft_putstack(a, 'A', stacks->a_size);
-	ft_putstack(b, 'B', stacks->b_size);
+	//ft_putstack(a, 'A', stacks->a_size);
+	//ft_putstack(b, 'B', stacks->b_size);
 }
 
 void	sort_stack(int *a, int *b, int stack_size)
@@ -32,8 +57,7 @@ void	sort_stack(int *a, int *b, int stack_size)
 		return ;
 	stacks->a_size = stack_size;
 	stacks->b_size = 0;
-	if (stack_size <= 5)
-		sort_small_stacks(a, b, stacks);
+	choose_algorithm(a, b, stacks);
 	free(stacks);
 }
 

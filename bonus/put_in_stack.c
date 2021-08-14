@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 23:49:40 by cmariot           #+#    #+#             */
-/*   Updated: 2021/08/13 12:14:04 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/08/13 15:05:40 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,13 @@ int	get_instructions(int *a, int *b, int stack_size)
 		{
 			ft_putstr_fd("Error\n", 2);
 			free(instruction);
+			free(stacks);
 			return (-1);
 		}
 		free(instruction);
 	}
+	ft_putstack(a, 'A', stacks->a_size);
+	ft_putstack(b, 'B', stacks->b_size);
 	free(stacks);
 	return (0);
 }
