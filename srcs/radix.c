@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/15 12:41:38 by cmariot           #+#    #+#             */
-/*   Updated: 2021/08/17 19:54:24 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/08/17 22:19:51 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int		numbers_in_max(int max)
 {
 	int	x;
 
+	if (max == 10)
+		return (2);
 	x = 1;
 	while (max > 10)
 	{
@@ -56,39 +58,69 @@ int		get_min(int *a, int size)
 	return (min);
 }
 
-int		get_next_min(int *a, int size, int previous_min)
+void	ft_sort_int_tab(int *tab, int size)
 {
-	int	new_min;
+	int i;
+	int j;
+	int stock;
 
-	new_min = previous_min;
-	while (size--)
+	i = 0;
+	stock = 0;
+	while (i < size)
 	{
-		if (new_min < *a)
+		j = 0;
+		while (j < (size - i))
 		{
-			new_min = *a;
+			if (tab[i] > tab[i + j])
+			{
+				stock = tab[i];
+				tab[i] = tab[i + j];
+				tab[i + j] = stock;
+			}
+			j++;
 		}
-		a++;
+		i++;
 	}
-	return (new_min);
 }
 
-void	simplify_list(int *a, int size, int min)
+int	*copy_tab(int *a, int size)
 {
-	int	simplified;
-	int	size_backup;
+	int *c;
 	int	i;
 
-	simplified = 0;
-	size_backup = size;
+	c = malloc(sizeof(int) * size);
+	if (!c)
+		return (NULL);
+	i = 0;
 	while (size--)
 	{
-		i = 0;
-		min = get_next_min(a, size_backup, simplified);
-		while (a[i] != min)
-			i++;
-		a[i] = simplified;
-		simplified++;
+		c[i] = a[i];
+		i++;
 	}
+	return (c);
+}
+
+void	simplify_list(int *a, int size)
+{
+	int	*c;
+	int	i;
+	int	j;
+
+	c = copy_tab(a, size);
+	ft_sort_int_tab(c, size);
+	i = 0;
+	while (i < size)
+	{
+		j = 0;
+		while (j < size)
+		{
+			if (a[i] == c[j])
+				a[i] = j;
+			j++;
+		}
+		i++;
+	}
+	free(c);
 }
 
 void	radix(int *a, int size)
@@ -101,15 +133,19 @@ void	radix(int *a, int size)
 	printf("min = %d\n", min);
 	max = get_max(a, size);
 	printf("max = %d\n", max);
+
 	//Simplifier la liste pour qu'on ait plus de negatifs a gerer, de 0 a N avec N entier positif
 	//-54 5 364 42 -> 0 1 3 2
-	//simplify_list(a, size, min);
+	simplify_list(a, size);
+
+	min = get_min(a, size);
+	printf("\nmin2 = %d\n", min);
+	max = get_max(a, size);
+	printf("max2 = %d\n", max);
+
 	x= numbers_in_max(max);
 	printf("x = %d\n", x);
-	while (x--)
-	{
-		printf("Sort\n");
-	}
+
 	//1- Trier en fonction des unites
 	//2- Trier en fonction des dizaines
 	//3- etc ...
@@ -121,7 +157,7 @@ int	main(void)
 {
 	int *a;
 
-	a = malloc(sizeof(int) * 10);
+	a = malloc(sizeof(int) * 11);
 	if (!a)
 		return (-1);
 	a[0] = 304;
@@ -134,6 +170,7 @@ int	main(void)
 	a[7] = 1;
 	a[8] = 9;
 	a[9] = 79;
+	a[10] = 7549;
 
 	int size;
 	size = 0;
@@ -143,6 +180,16 @@ int	main(void)
 	printf("size = %d\n", size);
 
 	radix(a, size);
+
+	int i;
+
+	printf("\nListe :\n");
+	i = 0;
+	while (i < 10)
+	{
+		printf("%d\n", a[i]);
+		i++;
+	}
 
 	free(a);
 	return (0);
