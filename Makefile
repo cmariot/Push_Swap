@@ -6,7 +6,7 @@
 #    By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/10 10:00:43 by cmariot           #+#    #+#              #
-#    Updated: 2021/08/13 12:23:47 by cmariot          ###   ########.fr        #
+#    Updated: 2021/08/18 16:30:38 by cmariot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ PROGRAM_SRCS = ${PROGRAM_DIR}/main.c \
 			   ${PROGRAM_DIR}/push_stacks.c \
 			   ${PROGRAM_DIR}/rotate_stacks.c \
 			   ${PROGRAM_DIR}/reverse_rotate_stacks.c \
+			   ${PROGRAM_DIR}/radix.c \
 			   ${CHECKER_DIR}/swap_stacks.c \
 			   ${CHECKER_DIR}/push_stacks.c \
 			   ${CHECKER_DIR}/rotate_stacks.c \

@@ -6,7 +6,7 @@
 /*   By: cmariot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:24:02 by cmariot           #+#    #+#             */
-/*   Updated: 2021/08/13 10:04:55 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/08/18 16:31:04 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ void	rr(int *a, int *b, t_stack *stacks);
 void	rra(int *a, t_stack *stacks);
 void	rrb(int *b, t_stack *stacks);
 void	rrr(int *a, int *b, t_stack *stacks);
+void	radix(int *a, int size);
 
 #endif
