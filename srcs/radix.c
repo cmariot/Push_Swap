@@ -6,54 +6,11 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/15 12:41:38 by cmariot           #+#    #+#             */
-/*   Updated: 2021/08/18 17:05:40 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/08/23 19:06:56 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-/*
-int		numbers_in_max(int max)
-{
-	int	x;
-
-	if (max == 10)
-		return (2);
-	x = 1;
-	while (max > 10)
-	{
-		max /= 10;
-		x++;
-	}
-	return (x);
-}
-
-int		get_max(int *a, int size)
-{
-	int max;
-
-	max = a[0];
-	while (size--)
-	{
-		if (*a > max)
-			max = *a;
-		a++;
-	}
-	return (max);
-}
-
-int		get_min(int *a, int size)
-{
-	int	min;
-
-	min = a[0];
-	while (size--)
-	{
-		if (min > *a)
-			min = *a;
-		a++;
-	}
-	return (min);
-}*/
 
 void	ft_sort_tab(int *tab, int size)
 {
@@ -112,7 +69,11 @@ void	simplify_list(int *a, int size)
 		while (j < size)
 		{
 			if (a[i] == c[j])
+			{
 				a[i] = j;
+				j++;
+				break ;
+			}
 			j++;
 		}
 		i++;
@@ -120,9 +81,30 @@ void	simplify_list(int *a, int size)
 	free(c);
 }
 
-void	radix(int *a, int size)
+void	radix(int *a, int *b, int size, t_stack *stacks)
 {
-	ft_putstack(a, 'A', size);
+	int	max_binary_bits;
+	int	i;
+	int	j;
+
 	simplify_list(a, size);
-	ft_putstack(a, 'A', size);
+	max_binary_bits = 0;
+	while (((size - 1) >> max_binary_bits) != 0)
+		max_binary_bits++;
+	i = 0;
+	while (i < max_binary_bits)
+	{
+		j = 0;
+		while (j < size)
+		{
+			if (((a[0] >> i) & 1) == 1)
+				ra(a, stacks);
+			else
+				pb(a, b, stacks);
+			j++;
+		}
+		while (stacks->b_size)
+			pa(a, b, stacks);
+		i++;
+	}
 }

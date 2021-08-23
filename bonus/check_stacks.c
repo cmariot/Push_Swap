@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 15:17:34 by cmariot           #+#    #+#             */
-/*   Updated: 2021/08/12 20:55:59 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/08/23 14:41:25 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,18 +41,14 @@ int	check_duplication(int *a, int stack_size)
 	i = 0;
 	zero = ft_check_zeros(a, stack_size);
 	if (zero > 1 || zero == -1)
-	{
 		return (-1);
-	}
 	while (a[i + 1])
 	{
 		j = i + 1;
 		while (j < stack_size)
 		{
 			if (a[i] == a[j])
-			{
 				return (-1);
-			}
 			j++;
 		}
 		i++;
