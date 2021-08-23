@@ -6,12 +6,13 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 18:40:40 by cmariot           #+#    #+#             */
-/*   Updated: 2021/08/13 15:03:39 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/08/23 21:44:30 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_checker.h"
 
+/* If there is only one arg value ("") */
 void	parse_argv(char *str)
 {
 	char	**arr;
@@ -39,6 +40,7 @@ void	parse_argv(char *str)
 	free(arr);
 }
 
+/* Push swap checker's main */
 int	main(int argc, char **argv)
 {
 	int		stack_size;

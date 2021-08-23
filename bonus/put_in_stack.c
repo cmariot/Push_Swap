@@ -6,12 +6,13 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 23:49:40 by cmariot           #+#    #+#             */
-/*   Updated: 2021/08/23 15:59:28 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/08/23 21:33:11 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_checker.h"
 
+/* Compare the instructions and execute the corresponding function */
 int	do_instruction(char *instr, int *a, int *b, t_stack *stacks)
 {
 	if (ft_strncmp(instr, "sa", (ft_strlen(instr) - 1)) == 0)
@@ -41,6 +42,7 @@ int	do_instruction(char *instr, int *a, int *b, t_stack *stacks)
 	return (0);
 }
 
+/* Get the instructions from the standard input */
 int	get_instructions(int *a, int *b, int stack_size)
 {
 	char	*instruction;
@@ -67,6 +69,7 @@ int	get_instructions(int *a, int *b, int stack_size)
 	return (0);
 }
 
+/* Atoi and check if the values are correctly formated */
 int	ft_atoi_check(char *str, int *a, int j)
 {
 	int		i;
@@ -87,16 +90,14 @@ int	ft_atoi_check(char *str, int *a, int j)
 		if (ft_isdigit(str[i++]) == 0)
 			return (-1);
 	if (len != ft_intlen(a[j]))
-	{
 		return (-1);
-	}
 	return (0);
 }
 
+/* Put the values of argv into the stack a, and 0 in stack b */
 int	ft_put_in_stack(int *a, int *b, char **argv, int j)
 {
 	int	i;
-	int	size_backup;
 	int	stack_size;
 
 	stack_size = 0;
@@ -104,9 +105,8 @@ int	ft_put_in_stack(int *a, int *b, char **argv, int j)
 		stack_size++;
 	if (j == 0)
 		stack_size--;
-	size_backup = stack_size;
 	i = 0;
-	while (stack_size--)
+	while (i < stack_size)
 	{
 		if (ft_atoi_check(argv[j++ + 1], a, i) == -1)
 		{
@@ -115,7 +115,7 @@ int	ft_put_in_stack(int *a, int *b, char **argv, int j)
 		}
 		b[i++] = 0;
 	}
-	if (check_duplication(a, size_backup) == 0)
+	if (check_duplication(a, stack_size) == 0)
 		return (1);
 	ft_putstr_fd("Error\n", 2);
 	return (-1);

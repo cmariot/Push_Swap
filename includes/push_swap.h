@@ -6,7 +6,7 @@
 /*   By: cmariot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:24:02 by cmariot           #+#    #+#             */
-/*   Updated: 2021/08/23 15:14:05 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/08/23 22:04:17 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,5 @@ void				rra(int *a, t_stack *stacks);
 void				rrb(int *b, t_stack *stacks);
 void				rrr(int *a, int *b, t_stack *stacks);
 void				radix(int *a, int *b, int size, t_stack *stacks);
-unsigned __int128	ft_convert_to_binary(unsigned int nb);
 
 #endif

@@ -6,13 +6,14 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/15 12:41:38 by cmariot           #+#    #+#             */
-/*   Updated: 2021/08/23 19:06:56 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/08/23 22:03:49 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_sort_tab(int *tab, int size)
+/* Bubble sort algorithm */
+void	ft_sort_stack(int *stack, int size)
 {
 	int	i;
 	int	j;
@@ -25,11 +26,11 @@ void	ft_sort_tab(int *tab, int size)
 		j = 0;
 		while (j < (size - i))
 		{
-			if (tab[i] > tab[i + j])
+			if (stack[i] > stack[i + j])
 			{
-				stock = tab[i];
-				tab[i] = tab[i + j];
-				tab[i + j] = stock;
+				stock = stack[i];
+				stack[i] = stack[i + j];
+				stack[i + j] = stock;
 			}
 			j++;
 		}
@@ -37,7 +38,8 @@ void	ft_sort_tab(int *tab, int size)
 	}
 }
 
-int	*copy_tab(int *a, int size)
+/* Create a copy of stack a */
+int	*copy_stack(int *a, int size)
 {
 	int	*c;
 	int	i;
@@ -54,14 +56,15 @@ int	*copy_tab(int *a, int size)
 	return (c);
 }
 
-void	simplify_list(int *a, int size)
+/* The min number will be 0, the max will be N (positive numbers) */
+void	simplify_stack(int *a, int size)
 {
 	int	*c;
 	int	i;
 	int	j;
 
-	c = copy_tab(a, size);
-	ft_sort_tab(c, size);
+	c = copy_stack(a, size);
+	ft_sort_stack(c, size);
 	i = 0;
 	while (i < size)
 	{
@@ -81,13 +84,17 @@ void	simplify_list(int *a, int size)
 	free(c);
 }
 
+/* Radix algorithm work for [0;N) interval, 
+ * First we need to simplify the a stack ;
+ * We compare the last number : if its 1 we ra, in other case we pb
+ * Finaly we put all the numbers in a and do it for all the bits */
 void	radix(int *a, int *b, int size, t_stack *stacks)
 {
 	int	max_binary_bits;
 	int	i;
 	int	j;
 
-	simplify_list(a, size);
+	simplify_stack(a, size);
 	max_binary_bits = 0;
 	while (((size - 1) >> max_binary_bits) != 0)
 		max_binary_bits++;

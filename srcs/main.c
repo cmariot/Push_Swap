@@ -6,12 +6,13 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 11:32:56 by cmariot           #+#    #+#             */
-/*   Updated: 2021/08/23 19:16:16 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/08/23 21:49:17 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/* For three numbers : 2 instructions max */
 void	sort_three(int *a, t_stack *stacks)
 {
 	if (a[0] > a[1])
@@ -38,19 +39,21 @@ void	sort_three(int *a, t_stack *stacks)
 	}
 }
 
+/* Choose the correct algorithm depending a_size */
 void	choose_algorithm(int *a, int *b, t_stack *stacks)
 {
 	if (stacks->a_size == 2)
 		ra(a, stacks);
 	else if (stacks->a_size == 3)
 		sort_three(a, stacks);
-	else if (stack_size == 5)
+	else if (stacks->a_size == 5)
 	{
 	}
 	else
 		radix(a, b, stacks->a_size, stacks);
 }
 
+/* Create the stack size structure and chose algorithm */
 void	sort_stack(int *a, int *b, int stack_size)
 {
 	t_stack	*stacks;
@@ -64,6 +67,7 @@ void	sort_stack(int *a, int *b, int stack_size)
 	free(stacks);
 }
 
+/* If there is only one arg value ("") */
 void	split_argv(char *str)
 {
 	char		**arr;
@@ -77,10 +81,10 @@ void	split_argv(char *str)
 	stack_size = 0;
 	while (arr[stack_size])
 		stack_size++;
-	a = malloc(sizeof(long int) * stack_size);
+	a = malloc(sizeof(int) * stack_size);
 	if (!a)
 		return ;
-	b = malloc(sizeof(long int) * stack_size);
+	b = malloc(sizeof(int) * stack_size);
 	if (!b)
 		return ;
 	if (ft_put_in_stack(a, b, arr, -1) == 1)
@@ -91,6 +95,7 @@ void	split_argv(char *str)
 	free(arr);
 }
 
+/* Push swap's main */
 int	main(int argc, char **argv)
 {
 	int			*a;
@@ -104,10 +109,10 @@ int	main(int argc, char **argv)
 	else
 	{
 		stack_size = (argc - 1);
-		a = malloc(sizeof(long int) * stack_size);
+		a = malloc(sizeof(int) * stack_size);
 		if (!a)
 			return (-1);
-		b = malloc(sizeof(long int) * stack_size);
+		b = malloc(sizeof(int) * stack_size);
 		if (!b)
 			return (-1);
 		if (ft_put_in_stack(a, b, argv, 0) == 1)
