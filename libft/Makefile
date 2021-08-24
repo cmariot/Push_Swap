@@ -6,7 +6,7 @@
 #    By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/27 18:57:32 by cmariot           #+#    #+#              #
-#    Updated: 2021/08/12 22:08:05 by cmariot          ###   ########.fr        #
+#    Updated: 2021/08/24 13:09:00 by cmariot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ CCFLAGS=-Wall -Wextra -Werror
 SRCS = ft_atoi.c \
        ft_bzero.c \
 	   ft_calloc.c \
+	   ft_free_array.c \
        ft_itoa.c \
        ft_isalnum.c \
        ft_isalpha.c \

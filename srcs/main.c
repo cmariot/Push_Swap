@@ -6,14 +6,14 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 11:32:56 by cmariot           #+#    #+#             */
-/*   Updated: 2021/08/23 21:49:17 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/08/24 13:25:40 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/* For three numbers : 2 instructions max */
-void	sort_three(int *a, t_stack *stacks)
+/* For three numbers : 3 instructions max */
+void	sort_three(int *a, int *b, t_stack *stacks)
 {
 	if (a[0] > a[1])
 	{
@@ -31,8 +31,9 @@ void	sort_three(int *a, t_stack *stacks)
 	{
 		if (a[2] > a[0])
 		{
+			pb(a, b, stacks);
 			ra(a, stacks);
-			sa(a, stacks);
+			pa(a, b, stacks);
 		}
 		else
 			rra(a, stacks);
@@ -45,7 +46,7 @@ void	choose_algorithm(int *a, int *b, t_stack *stacks)
 	if (stacks->a_size == 2)
 		ra(a, stacks);
 	else if (stacks->a_size == 3)
-		sort_three(a, stacks);
+		sort_three(a, b, stacks);
 	else if (stacks->a_size == 5)
 	{
 	}
@@ -92,7 +93,7 @@ void	split_argv(char *str)
 			sort_stack(a, b, stack_size);
 	free(a);
 	free(b);
-	free(arr);
+	ft_free_array(arr);
 }
 
 /* Push swap's main */
