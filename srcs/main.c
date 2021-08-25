@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 11:32:56 by cmariot           #+#    #+#             */
-/*   Updated: 2021/08/24 13:38:02 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/08/25 13:10:57 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ void	split_argv(char *str)
 	stack_size = 0;
 	while (arr[stack_size])
 		stack_size++;
+//	if (stack_size == 0)
+//		return ;
 	a = malloc(sizeof(int) * stack_size);
 	if (!a)
 		return ;

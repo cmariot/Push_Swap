@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 18:40:40 by cmariot           #+#    #+#             */
-/*   Updated: 2021/08/23 21:44:30 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/08/25 13:14:38 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void	parse_argv(char *str)
 	stack_size = 0;
 	while (arr[stack_size])
 		stack_size++;
+	if (stack_size == 0)
+		return ;
 	a = malloc(sizeof(int) * stack_size);
 	if (!a)
 		return ;
@@ -37,7 +39,7 @@ void	parse_argv(char *str)
 			check_stacks(a, b, stack_size);
 	free(a);
 	free(b);
-	free(arr);
+	ft_free_array(arr);
 }
 
 /* Push swap checker's main */
