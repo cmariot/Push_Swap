@@ -6,7 +6,7 @@
 /*   By: cmariot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:24:02 by cmariot           #+#    #+#             */
-/*   Updated: 2021/08/24 13:40:35 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/08/26 01:23:12 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,7 @@ void	rrr(int *a, int *b, t_stack *stacks);
 void	sort_three(int *a, int *b, t_stack *stacks);
 void	sort_five(int *a, int *b, t_stack *stacks);
 void	radix(int *a, int *b, int size, t_stack *stacks);
+void	ft_sort_stack(int *stack, int size);
+int		*copy_stack(int *a, int size);
 
 #endif
