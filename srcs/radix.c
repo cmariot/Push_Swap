@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/15 12:41:38 by cmariot           #+#    #+#             */
-/*   Updated: 2021/08/23 22:03:49 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/08/26 02:59:10 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,20 +86,20 @@ void	simplify_stack(int *a, int size)
 
 /* Radix algorithm work for [0;N) interval, 
  * First we need to simplify the a stack ;
- * We compare the last number : if its 1 we ra, in other case we pb
+ * We compare the last bit : if its 1 we ra, in other case we pb
  * Finaly we put all the numbers in a and do it for all the bits */
 void	radix(int *a, int *b, int size, t_stack *stacks)
 {
-	int	max_binary_bits;
+	int	max_bits;
 	int	i;
 	int	j;
 
 	simplify_stack(a, size);
-	max_binary_bits = 0;
-	while (((size - 1) >> max_binary_bits) != 0)
-		max_binary_bits++;
+	max_bits = 0;
+	while (((size - 1) >> max_bits) != 0)
+		max_bits++;
 	i = 0;
-	while (i < max_binary_bits)
+	while (i < max_bits)
 	{
 		j = 0;
 		while (j < size)

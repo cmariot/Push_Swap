@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 13:34:23 by cmariot           #+#    #+#             */
-/*   Updated: 2021/08/24 13:08:44 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/08/26 11:39:07 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void		ft_bzero(void *b, size_t n);
 void		*ft_calloc(size_t count, size_t size);
 void		*ft_free_array(char **arr);
 size_t		ft_intlen(int n);
+char		*ft_int_to_binary_array(unsigned int nb);
 int			ft_isalnum(int c);
 int			ft_isalpha(int c);
 int			ft_isascii(int c);

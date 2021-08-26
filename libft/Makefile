@@ -6,7 +6,7 @@
 #    By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/27 18:57:32 by cmariot           #+#    #+#              #
-#    Updated: 2021/08/24 13:09:00 by cmariot          ###   ########.fr        #
+#    Updated: 2021/08/26 03:55:46 by cmariot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,9 @@ CCFLAGS=-Wall -Wextra -Werror
 SRCS = ft_atoi.c \
        ft_bzero.c \
 	   ft_calloc.c \
+	   ft_convert_to_binary.c \
 	   ft_free_array.c \
+	   ft_intlen.c \
        ft_itoa.c \
        ft_isalnum.c \
        ft_isalpha.c \
@@ -62,8 +64,7 @@ SRCS = ft_atoi.c \
 	   ft_lstmap.c \
 	   ft_lstnew.c \
 	   ft_lstsize.c \
-	   get_next_line.c \
-	   ft_intlen.c
+	   get_next_line.c
 
 OBJS = ${SRCS:.c=.o}
 
@@ -72,20 +73,17 @@ BONUS_OBJS = ${BONUS_SRCS:.c=.o}
 RM = rm -rf
 
 .c.o:
-			${CC} ${CCFLAGS} -c $< -o ${<:.c=.o}
+			@${CC} ${CCFLAGS} -c $< -o ${<:.c=.o}
 
 all:		${NAME}
 
 $(NAME):	${OBJS}
-			ar rc ${NAME} ${OBJS}
-
-bonus: 		${OBJS} ${BONUS_OBJS}
-			ar rc ${NAME} ${OBJS} ${BONUS_OBJS}
+			@ar rc ${NAME} ${OBJS}
 
 clean:
-			${RM} ${OBJS} ${BONUS_OBJS}
+			@${RM} ${OBJS} ${BONUS_OBJS}
 
 fclean:		clean
-			${RM} ${NAME}
+			@${RM} ${NAME}
 
 re:			fclean all
