@@ -6,7 +6,7 @@
 #    By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/10 10:00:43 by cmariot           #+#    #+#              #
-#    Updated: 2021/08/27 23:11:36 by cmariot          ###   ########.fr        #
+#    Updated: 2021/09/01 16:03:37 by cmariot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,18 +21,18 @@ PROGRAM_DIR = srcs
 
 # push_swap source files
 PROGRAM_SRCS = ${PROGRAM_DIR}/main.c \
-			   ${CHECKER_DIR}/put_in_stack.c \
+			   ${PROGRAM_DIR}/put_in_stack.c \
 			   ${PROGRAM_DIR}/swap_stacks.c \
 			   ${PROGRAM_DIR}/push_stacks.c \
 			   ${PROGRAM_DIR}/rotate_stacks.c \
 			   ${PROGRAM_DIR}/reverse_rotate_stacks.c \
 			   ${PROGRAM_DIR}/sort_small_stacks.c \
 			   ${PROGRAM_DIR}/radix.c \
-			   ${CHECKER_DIR}/swap_stacks.c \
-			   ${CHECKER_DIR}/push_stacks.c \
-			   ${CHECKER_DIR}/rotate_stacks.c \
-			   ${CHECKER_DIR}/reverse_rotate_stacks.c \
-			   ${CHECKER_DIR}/check_stacks.c
+			   ${PROGRAM_DIR}/swap_stacks_bonus.c \
+			   ${PROGRAM_DIR}/push_stacks_bonus.c \
+			   ${PROGRAM_DIR}/rotate_stacks_bonus.c \
+			   ${PROGRAM_DIR}/reverse_rotate_stacks_bonus.c \
+			   ${PROGRAM_DIR}/check_stacks.c
 
 # push_swap object files
 PROGRAM_SRCS_OBJS = ${PROGRAM_SRCS:.c=.o}
@@ -45,12 +45,12 @@ CHECKER_DIR = bonus
 
 # checker source files
 CHECKER_SRCS = ${CHECKER_DIR}/main.c \
-			   ${CHECKER_DIR}/put_in_stack.c \
-			   ${CHECKER_DIR}/swap_stacks.c \
-			   ${CHECKER_DIR}/push_stacks.c \
-			   ${CHECKER_DIR}/rotate_stacks.c \
-			   ${CHECKER_DIR}/reverse_rotate_stacks.c \
-			   ${CHECKER_DIR}/check_stacks.c
+			   ${CHECKER_DIR}/put_in_stack_bonus.c \
+			   ${CHECKER_DIR}/swap_stacks_bonus.c \
+			   ${CHECKER_DIR}/push_stacks_bonus.c \
+			   ${CHECKER_DIR}/rotate_stacks_bonus.c \
+			   ${CHECKER_DIR}/reverse_rotate_stacks_bonus.c \
+			   ${CHECKER_DIR}/check_stacks_bonus.c
 
 # checker object files
 CHECKER_SRCS_OBJS = ${CHECKER_SRCS:.c=.o}
