@@ -78,8 +78,8 @@ ${PROGRAM}:		program_compil
 
 # Push_swap's compilation
 program_compil: compil_libft ${PROGRAM_SRCS_OBJS}
-				@${COMPILER} ${COMPILER_FLAGS} ${PROGRAM_SRCS_OBJS} -I ${INCLUDES_DIR} -L ${LIBFT_DIR} -lft -o ${PROGRAM}
-				@printf "\x1b[32mThe push_swap program is ready.\x1b[0m\n"
+				@${COMPILER} ${COMPILER_FLAGS} ${PROGRAM_SRCS_OBJS} -I ${INCLUDES_DIR} -L ${LIBFT_DIR} -lft -g -o ${PROGRAM}
+				@printf "The push_swap program is ready.\n"
 
 # Test push_swap with the arguments given at the top of Makefile
 test:			program_compil
@@ -87,12 +87,12 @@ test:			program_compil
 
 # Count the push_swap outpout number of lines 
 count:			checker_compil
-				@printf "\x1b[32mTotal number of instructions : \x1b[0m"
+				@printf "Total number of instructions : "
 				@./${PROGRAM} ${ARG} | wc -l
 
 # Check leaks on push_swap with the arguments given at the top of Makefile
 program_leaks:	program_compil
-				leaks -atExit -- ./${PROGRAM} ${ARG}
+				valgrind ./${PROGRAM} ${ARG}
 
 
 # Checker rules
@@ -101,8 +101,8 @@ ${CHECKER}:		checker_compil
 
 # Checker's compilation
 checker_compil:	compil_libft ${CHECKER_SRCS_OBJS}
-				@${COMPILER} ${COMPILER_FLAGS} ${CHECKER_SRCS_OBJS} -I ${INCLUDES_DIR} -L ${LIBFT_DIR} -lft -o ${CHECKER}
-				@printf "\x1b[32mThe checker is ready.\x1b[0m\n"
+				@${COMPILER} ${COMPILER_FLAGS} ${CHECKER_SRCS_OBJS} -I ${INCLUDES_DIR} -L ${LIBFT_DIR} -lft -g -o ${CHECKER}
+				@printf "The checker is ready.\n"
 
 # Test push_swap & checker with the arguments given at the top of Makefile
 checker_test:	checker_compil
@@ -110,7 +110,7 @@ checker_test:	checker_compil
 
 # Check leaks on checker with the arguments given at the top of Makefile
 checker_leaks:	checker_compil
-				leaks -atExit -- ./${CHECKER} ${ARG}
+				valgrind ./${CHECKER} ${ARG}
 
 
 # Both rules
@@ -120,7 +120,7 @@ bonus:			all
 # Check the norme in the source directories
 norme:
 				norminette ./srcs ./includes ./libft ./bonus
-				@printf "\x1b[32mThe norm is checked in this directory and all subdirectories.\x1b[0m\n"
+				@printf "The norm is checked in this directory and all subdirectories.\n"
 
 # Libft compilation
 compil_libft:
@@ -131,7 +131,7 @@ clean:
 				@cd libft && make clean
 				@${REMOVE} ${PROGRAM_SRCS_OBJS}
 				@${REMOVE} ${CHECKER_SRCS_OBJS}
-				@printf "\x1b[32mThe object files have been deleted.\x1b[0m\n"
+				@printf "The object files have been deleted.\n"
 
 # Delete the .o .a and exec files
 fclean:			
@@ -140,7 +140,7 @@ fclean:
 				@${REMOVE} ${CHECKER_SRCS_OBJS}
 				@${REMOVE} ${PROGRAM}
 				@${REMOVE} ${CHECKER}
-				@printf "\x1b[32mThe object and binary files have been deleted.\x1b[0m\n"
+				@printf "The object and binary files have been deleted.\n"
 
 # Delete all and redo
 re:				fclean all

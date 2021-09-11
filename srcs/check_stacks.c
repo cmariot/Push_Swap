@@ -39,7 +39,7 @@ int	check_duplication(int *a, int stack_size)
 	zero = ft_check_zeros(a, stack_size);
 	if (zero > 1 || zero == -1)
 		return (-1);
-	while (a[i + 1])
+	while (i < stack_size)
 	{
 		j = i + 1;
 		while (j < stack_size)

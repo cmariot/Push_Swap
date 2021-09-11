@@ -12,22 +12,22 @@
 
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+char	*ft_strchr(const char *s, char c)
 {
 	char	*str;
 	int		i;
 
-	if ((char)c < 0 || (char)c > 127)
+	if (!c)
 		return (NULL);
 	str = (char *)s;
 	i = 0;
 	while (str[i] != '\0')
 	{
-		if (str[i] == (char)c)
+		if (str[i] == c)
 			return (&str[i]);
 		i++;
 	}
-	if (str[i] == '\0' && (char)c == '\0')
+	if (str[i] == '\0' && c == '\0')
 		return (&str[i]);
 	return (NULL);
 }
