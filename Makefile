@@ -6,7 +6,7 @@
 #    By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/10 10:00:43 by cmariot           #+#    #+#              #
-#    Updated: 2021/09/01 16:03:37 by cmariot          ###   ########.fr        #
+#    Updated: 2021/09/12 14:28:10 by cmariot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 PROGRAM = push_swap
 
 # Argument for testing
-ARG = 5 2 1 3 4
+ARG = 7933 3404 9369 8273 4231
 
 # push_swap source directory
 PROGRAM_DIR = srcs
@@ -69,8 +69,7 @@ REMOVE = rm -rf
 
 # Convert .c files into .o files
 .c.o:
-				@${COMPILER} ${COMPILER_FLAGS} -c $< -o ${<:.c=.o} -I ${INCLUDES_DIR} -I ${LIBFT_DIR}
-
+				${COMPILER} ${COMPILER_FLAGS} -c $< -o ${<:.c=.o} -I ${INCLUDES_DIR} -I ${LIBFT_DIR}
 
 # Push_swap rules
 # Alias for compilation
@@ -78,7 +77,7 @@ ${PROGRAM}:		program_compil
 
 # Push_swap's compilation
 program_compil: compil_libft ${PROGRAM_SRCS_OBJS}
-				@${COMPILER} ${COMPILER_FLAGS} ${PROGRAM_SRCS_OBJS} -I ${INCLUDES_DIR} -L ${LIBFT_DIR} -lft -g -o ${PROGRAM}
+				${COMPILER} ${COMPILER_FLAGS} ${PROGRAM_SRCS_OBJS} -I ${INCLUDES_DIR} -L ${LIBFT_DIR} -lft -g -o ${PROGRAM}
 				@printf "The push_swap program is ready.\n"
 
 # Test push_swap with the arguments given at the top of Makefile
@@ -101,11 +100,11 @@ ${CHECKER}:		checker_compil
 
 # Checker's compilation
 checker_compil:	compil_libft ${CHECKER_SRCS_OBJS}
-				@${COMPILER} ${COMPILER_FLAGS} ${CHECKER_SRCS_OBJS} -I ${INCLUDES_DIR} -L ${LIBFT_DIR} -lft -g -o ${CHECKER}
+				${COMPILER} ${COMPILER_FLAGS} ${CHECKER_SRCS_OBJS} -I ${INCLUDES_DIR} -L ${LIBFT_DIR} -lft -g -o ${CHECKER}
 				@printf "The checker is ready.\n"
 
 # Test push_swap & checker with the arguments given at the top of Makefile
-checker_test:	checker_compil
+checker_test:	program_compil checker_compil
 				./push_swap ${ARG} | ./${CHECKER} ${ARG}
 
 # Check leaks on checker with the arguments given at the top of Makefile
@@ -124,22 +123,22 @@ norme:
 
 # Libft compilation
 compil_libft:
-				@cd ${LIBFT_DIR} && make
+				cd ${LIBFT_DIR} && make
 
 # Delete the .o files
 clean:
 				@cd libft && make clean
-				@${REMOVE} ${PROGRAM_SRCS_OBJS}
-				@${REMOVE} ${CHECKER_SRCS_OBJS}
+				${REMOVE} ${PROGRAM_SRCS_OBJS}
+				${REMOVE} ${CHECKER_SRCS_OBJS}
 				@printf "The object files have been deleted.\n"
 
 # Delete the .o .a and exec files
 fclean:			
 				@cd libft && make fclean
-				@${REMOVE} ${PROGRAM_SRCS_OBJS}
-				@${REMOVE} ${CHECKER_SRCS_OBJS}
-				@${REMOVE} ${PROGRAM}
-				@${REMOVE} ${CHECKER}
+				${REMOVE} ${PROGRAM_SRCS_OBJS}
+				${REMOVE} ${CHECKER_SRCS_OBJS}
+				${REMOVE} ${PROGRAM}
+				${REMOVE} ${CHECKER}
 				@printf "The object and binary files have been deleted.\n"
 
 # Delete all and redo
