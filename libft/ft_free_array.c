@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/23 22:13:12 by cmariot           #+#    #+#             */
-/*   Updated: 2021/08/24 13:07:39 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/09/15 14:28:48 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	*ft_free_array(char **arr)
 	int	i;
 
 	i = 0;
-	while (arr[i] != NULL)
+	while (arr[i])
 	{
 		free(arr[i]);
 		i++;

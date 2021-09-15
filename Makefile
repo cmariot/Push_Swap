@@ -6,7 +6,7 @@
 #    By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/10 10:00:43 by cmariot           #+#    #+#              #
-#    Updated: 2021/09/12 14:28:10 by cmariot          ###   ########.fr        #
+#    Updated: 2021/09/15 14:29:43 by cmariot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,7 +69,7 @@ REMOVE = rm -rf
 
 # Convert .c files into .o files
 .c.o:
-				${COMPILER} ${COMPILER_FLAGS} -c $< -o ${<:.c=.o} -I ${INCLUDES_DIR} -I ${LIBFT_DIR}
+				${COMPILER} ${COMPILER_FLAGS} -g -c $< -o ${<:.c=.o} -I ${INCLUDES_DIR} -I ${LIBFT_DIR}
 
 # Push_swap rules
 # Alias for compilation
@@ -77,7 +77,7 @@ ${PROGRAM}:		program_compil
 
 # Push_swap's compilation
 program_compil: compil_libft ${PROGRAM_SRCS_OBJS}
-				${COMPILER} ${COMPILER_FLAGS} ${PROGRAM_SRCS_OBJS} -I ${INCLUDES_DIR} -L ${LIBFT_DIR} -lft -g -o ${PROGRAM}
+				${COMPILER} ${COMPILER_FLAGS} ${PROGRAM_SRCS_OBJS} -I ${INCLUDES_DIR} -L ${LIBFT_DIR} -lft -o ${PROGRAM}
 				@printf "The push_swap program is ready.\n"
 
 # Test push_swap with the arguments given at the top of Makefile
