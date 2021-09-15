@@ -6,7 +6,7 @@
 #    By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/10 10:00:43 by cmariot           #+#    #+#              #
-#    Updated: 2021/09/15 14:29:43 by cmariot          ###   ########.fr        #
+#    Updated: 2021/09/15 19:00:32 by cmariot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,6 +79,15 @@ ${PROGRAM}:		program_compil
 program_compil: compil_libft ${PROGRAM_SRCS_OBJS}
 				${COMPILER} ${COMPILER_FLAGS} ${PROGRAM_SRCS_OBJS} -I ${INCLUDES_DIR} -L ${LIBFT_DIR} -lft -o ${PROGRAM}
 				@printf "The push_swap program is ready.\n"
+
+random_500:
+				@echo `seq 0 500 | sort -R | tr "\n" " "`
+random_100:
+				@echo `seq 0 100 | sort -R | tr "\n" " "`
+random_5:
+				@echo =`seq 0 5 | sort -R | tr "\n" " "` 
+random_3:
+				@echo =`seq 0 3 | sort -R | tr "\n" " "` 
 
 # Test push_swap with the arguments given at the top of Makefile
 test:			program_compil
