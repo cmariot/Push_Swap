@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 23:49:40 by cmariot           #+#    #+#             */
-/*   Updated: 2021/09/15 14:31:49 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/09/15 15:07:58 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,7 @@ int	do_instruction(char *instr, int *a, int *b, t_stack *stacks)
 	else if (ft_strncmp(instr, "rrr", (ft_strlen(instr) - 1)) == 0)
 		rrr_checker(a, b, stacks);
 	else
-	{
-		printf("On sort la\n");
 		return (-1);
-	}
 	return (0);
 }
 
@@ -62,7 +59,6 @@ int	get_instructions(int *a, int *b, int stack_size)
 		if (do_instruction(instruction, a, b, stacks) == -1)
 		{
 			ft_putstr_fd("Error\n", 2);
-			printf("On sort la 2\n");
 			free(instruction);
 			free(stacks);
 			return (-1);

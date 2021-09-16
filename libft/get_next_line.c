@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 14:18:47 by cmariot           #+#    #+#             */
-/*   Updated: 2021/08/10 09:51:28 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/09/15 15:07:50 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ char	*ft_strdel(char **adr_str)
 	return (NULL);
 }
 
+#include <stdio.h>
 char	*gnl_outpout(ssize_t read_return, char **str_input)
 {
 	int		len;
@@ -81,5 +82,6 @@ char	*gnl_outpout(ssize_t read_return, char **str_input)
 	}
 	str_return = ft_substr(*str_input, 0, len);
 	ft_strdel(str_input);
+	printf("On sort ici 3\n");
 	return (str_return);
 }
