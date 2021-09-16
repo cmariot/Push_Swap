@@ -6,44 +6,32 @@
 #    By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/10 10:00:43 by cmariot           #+#    #+#              #
-#    Updated: 2021/09/15 19:00:32 by cmariot          ###   ########.fr        #
+#    Updated: 2021/09/16 15:48:12 by cmariot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# Program name
 PROGRAM = push_swap
 
-# Argument for testing
-ARG = 7933 3404 9369 8273 4231
+ARG = 2 1 3 5 0 4
 
-# push_swap source directory
 PROGRAM_DIR = srcs
 
-# push_swap source files
 PROGRAM_SRCS = ${PROGRAM_DIR}/main.c \
 			   ${PROGRAM_DIR}/put_in_stack.c \
+			   ${PROGRAM_DIR}/sort_small_stacks.c \
+			   ${PROGRAM_DIR}/radix.c \
 			   ${PROGRAM_DIR}/swap_stacks.c \
 			   ${PROGRAM_DIR}/push_stacks.c \
 			   ${PROGRAM_DIR}/rotate_stacks.c \
 			   ${PROGRAM_DIR}/reverse_rotate_stacks.c \
-			   ${PROGRAM_DIR}/sort_small_stacks.c \
-			   ${PROGRAM_DIR}/radix.c \
-			   ${PROGRAM_DIR}/swap_stacks_bonus.c \
-			   ${PROGRAM_DIR}/push_stacks_bonus.c \
-			   ${PROGRAM_DIR}/rotate_stacks_bonus.c \
-			   ${PROGRAM_DIR}/reverse_rotate_stacks_bonus.c \
 			   ${PROGRAM_DIR}/check_stacks.c
 
-# push_swap object files
 PROGRAM_SRCS_OBJS = ${PROGRAM_SRCS:.c=.o}
 
-# checker name
 CHECKER = checker
 
-# checker source directory
 CHECKER_DIR = bonus
 
-# checker source files
 CHECKER_SRCS = ${CHECKER_DIR}/main.c \
 			   ${CHECKER_DIR}/put_in_stack_bonus.c \
 			   ${CHECKER_DIR}/swap_stacks_bonus.c \
@@ -52,13 +40,10 @@ CHECKER_SRCS = ${CHECKER_DIR}/main.c \
 			   ${CHECKER_DIR}/reverse_rotate_stacks_bonus.c \
 			   ${CHECKER_DIR}/check_stacks_bonus.c
 
-# checker object files
 CHECKER_SRCS_OBJS = ${CHECKER_SRCS:.c=.o}
 
-# Header directory 
 INCLUDES_DIR = includes
 
-# Libft source directory
 LIBFT_DIR = libft
 
 COMPILER = gcc
@@ -81,13 +66,13 @@ program_compil: compil_libft ${PROGRAM_SRCS_OBJS}
 				@printf "The push_swap program is ready.\n"
 
 random_500:
-				@echo `seq 0 500 | sort -R | tr "\n" " "`
+				@echo `seq -250 249 | sort -R | tr "\n" " "`
 random_100:
 				@echo `seq 0 100 | sort -R | tr "\n" " "`
 random_5:
-				@echo =`seq 0 5 | sort -R | tr "\n" " "` 
+				@echo `seq 0 5 | sort -R | tr "\n" " "` 
 random_3:
-				@echo =`seq 0 3 | sort -R | tr "\n" " "` 
+				@echo `seq 0 3 | sort -R | tr "\n" " "` 
 
 # Test push_swap with the arguments given at the top of Makefile
 test:			program_compil
@@ -120,6 +105,9 @@ checker_test:	program_compil checker_compil
 checker_leaks:	checker_compil
 				valgrind ./${CHECKER} ${ARG}
 
+
+leaks:			program_compil checker_compil
+				valgrind --leak-check=full ./${PROGRAM} ${ARG} | ./${CHECKER} ${ARG}
 
 # Both rules
 all: 			program_compil checker_compil

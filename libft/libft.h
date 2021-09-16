@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 13:34:23 by cmariot           #+#    #+#             */
-/*   Updated: 2021/08/26 11:39:07 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/09/16 13:38:05 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,5 +83,5 @@ char		*get_next_line(int fd);
 void		ft_add_buf_to_str(char **str, void *buf);
 char		*ft_strdel(char **adr_str);
 char		*gnl_outpout(ssize_t read_return, char **str_input);
-
+char		*ft_strdel(char **addr);
 #endif

@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 15:17:34 by cmariot           #+#    #+#             */
-/*   Updated: 2021/09/01 15:06:11 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/09/16 15:48:08 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,18 +53,6 @@ int	check_duplication(int *a, int stack_size)
 	return (0);
 }
 
-/* Check if the stack b is empty */
-int	is_empty(int *b, int stack_size)
-{
-	int	i;
-
-	i = 0;
-	while (i != stack_size)
-		if (b[i++] != '\0')
-			return (-1);
-	return (0);
-}
-
 /* Check if the stack a is sorted, smallest to bigger */
 int	is_sorted(int *a, int stack_size)
 {
@@ -87,27 +75,6 @@ int	is_sorted(int *a, int stack_size)
 		if (a[i] >= a[i + 1])
 			return (-1);
 		i++;
-	}
-	return (0);
-}
-
-/* Execute multiple check tests and print the result */
-int	check_stacks(int *a, int *b, int stack_size)
-{
-	int	size;
-
-	size = stack_size;
-	if (is_empty(b, stack_size) == -1)
-	{
-		ft_putstr_fd("KO\n", 1);
-	}
-	else if (is_sorted(a, size) == -1)
-	{
-		ft_putstr_fd("KO\n", 1);
-	}
-	else
-	{
-		ft_putstr_fd("OK\n", 1);
 	}
 	return (0);
 }

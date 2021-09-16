@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 12:27:24 by cmariot           #+#    #+#             */
-/*   Updated: 2021/09/12 14:17:10 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/09/16 15:04:16 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,10 @@ void	ra(int *a, t_stack *stacks)
 		return ;
 	i = 0;
 	backup = a[0];
-	while (stacks->a_size - i)
+	while (i < stacks->a_size)
 	{
-		a[i] = a[i + 1];
+		if ((i + 1) < stacks->a_size)
+			a[i] = a[i + 1];
 		i++;
 	}
 	a[i - 1] = backup;
@@ -42,9 +43,10 @@ void	rb(int *b, t_stack *stacks)
 		return ;
 	i = 0;
 	backup = b[0];
-	while (stacks->b_size - i)
+	while (i < stacks->b_size)
 	{
-		b[i] = b[i + 1];
+		if ((i + 1) < stacks->b_size)
+			b[i] = b[i + 1];
 		i++;
 	}
 	b[i - 1] = backup;

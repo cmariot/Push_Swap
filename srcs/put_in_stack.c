@@ -6,68 +6,11 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 23:49:40 by cmariot           #+#    #+#             */
-/*   Updated: 2021/09/15 14:20:56 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/09/16 15:48:06 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-/* Compare the instructions and execute the corresponding function */
-int	do_instruction(char *instr, int *a, int *b, t_stack *stacks)
-{
-	if (ft_strncmp(instr, "sa", (ft_strlen(instr) - 1)) == 0)
-		sa_checker(a, stacks);
-	else if (ft_strncmp(instr, "sb", (ft_strlen(instr) - 1)) == 0)
-		sb_checker(b, stacks);
-	else if (ft_strncmp(instr, "ss", (ft_strlen(instr) - 1)) == 0)
-		ss_checker(a, b, stacks);
-	else if (ft_strncmp(instr, "pa", (ft_strlen(instr) - 1)) == 0)
-		pa_checker(a, b, stacks);
-	else if (ft_strncmp(instr, "pb", (ft_strlen(instr) - 1)) == 0)
-		pb_checker(a, b, stacks);
-	else if (ft_strncmp(instr, "ra", (ft_strlen(instr) - 1)) == 0)
-		ra_checker(a, stacks);
-	else if (ft_strncmp(instr, "rb", (ft_strlen(instr) - 1)) == 0)
-		rb_checker(b, stacks);
-	else if (ft_strncmp(instr, "rr", (ft_strlen(instr) - 1)) == 0)
-		rr_checker(a, b, stacks);
-	else if (ft_strncmp(instr, "rra", (ft_strlen(instr) - 1)) == 0)
-		rra_checker(a, stacks);
-	else if (ft_strncmp(instr, "rrb", (ft_strlen(instr) - 1)) == 0)
-		rrb_checker(b, stacks);
-	else if (ft_strncmp(instr, "rrr", (ft_strlen(instr) - 1)) == 0)
-		rrr_checker(a, b, stacks);
-	else
-		return (-1);
-	return (0);
-}
-
-/* Get the instructions from the standard input */
-int	get_instructions(int *a, int *b, int stack_size)
-{
-	char	*instruction;
-	t_stack	*stacks;
-
-	stacks = malloc(sizeof(t_stack));
-	stacks->a_size = stack_size;
-	stacks->b_size = 0;
-	while (1)
-	{
-		instruction = get_next_line(0);
-		if (instruction == NULL)
-			break ;
-		if (do_instruction(instruction, a, b, stacks) == -1)
-		{
-			ft_putstr_fd("Error\n", 2);
-			free(instruction);
-			free(stacks);
-			return (-1);
-		}
-		free(instruction);
-	}
-	free(stacks);
-	return (0);
-}
 
 /* Atoi and check if the values are correctly formated */
 int	ft_atoi_check(char *str, int *a, int j)
