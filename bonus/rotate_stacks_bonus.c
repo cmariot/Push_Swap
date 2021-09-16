@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 12:27:24 by cmariot           #+#    #+#             */
-/*   Updated: 2021/09/16 13:43:27 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/09/16 17:11:59 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ void	ra_checker(int *a, t_stack *stacks)
 	backup = a[0];
 	while (i < stacks->a_size)
 	{
-		a[i] = a[i + 1];
+		if (a[i + 1])
+			a[i] = a[i + 1];
 		i++;
 	}
 	a[i - 1] = backup;
@@ -43,7 +44,8 @@ void	rb_checker(int *b, t_stack *stacks)
 	backup = b[0];
 	while (i < stacks->b_size)
 	{
-		b[i] = b[i + 1];
+		if (b[i + 1])
+			b[i] = b[i + 1];
 		i++;
 	}
 	b[i - 1] = backup;

@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 23:49:40 by cmariot           #+#    #+#             */
-/*   Updated: 2021/09/16 15:19:11 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/09/16 16:45:22 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,9 @@ int	get_instructions(int *a, int *b, int stack_size)
 {
 	char	*instruction;
 	t_stack	*stacks;
+	int		error;
 
+	error = 0;
 	stacks = malloc(sizeof(t_stack));
 	stacks->a_size = stack_size;
 	stacks->b_size = 0;
@@ -57,17 +59,15 @@ int	get_instructions(int *a, int *b, int stack_size)
 		if (instruction == NULL)
 			break ;
 		if (do_instruction(instruction, a, b, stacks) == -1)
-		{
-			ft_putstr_fd("Error\n", 2);
-			free(instruction);
-			free(stacks);
-			return (-1);
-		}
+			error++;
 		free(instruction);
 	}
-	ft_putstack(a, 'A', stacks->a_size);
-	ft_putstack(b, 'B', stacks->b_size);
 	free(stacks);
+	if (error)
+	{
+		ft_putstr_fd("Error\n", 2);
+		return (-1);
+	}
 	return (0);
 }
 
