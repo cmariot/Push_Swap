@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 14:08:16 by cmariot           #+#    #+#             */
-/*   Updated: 2021/05/28 11:29:42 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/09/16 10:11:06 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ char	*ft_strdup(const char *s1)
 	char	*cpy;
 	int		i;
 
+	if (!*s1)
+		return (NULL);
 	src = (char *)s1;
 	src_len = ft_strlen(src);
 	cpy = malloc(sizeof(char) * (src_len + 1));

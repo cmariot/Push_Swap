@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 15:26:24 by cmariot           #+#    #+#             */
-/*   Updated: 2021/04/18 16:20:25 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/09/16 10:19:17 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	if (n == 0)
 		return (0);
 	i = 0;
-	while (s1[i] && s2[i] && (i < n - 1))
+	while (i < (n - 1))
 	{
 		if (s1[i] != s2[i])
 		{

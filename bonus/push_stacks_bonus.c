@@ -6,9 +6,11 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 22:44:19 by cmariot           #+#    #+#             */
-/*   Updated: 2021/08/27 22:44:28 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/09/16 11:56:40 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+//OK NO LEAKS / INVALID WRITE ...
 
 #include "push_swap_checker.h"
 
@@ -23,13 +25,12 @@ void	pa_checker(int *a, int *b, t_stack *stacks)
 		return ;
 	backup = b[0];
 	i = 0;
-	while (stacks->b_size - i)
+	while (i < (stacks->b_size - 1))
 	{
 		b[i] = b[i + 1];
 		i++;
 	}
 	stacks->b_size--;
-	b[i - 1] = 0;
 	i = 0;
 	j = stacks->a_size;
 	while (stacks->a_size - i)
@@ -53,13 +54,12 @@ void	pb_checker(int *a, int *b, t_stack *stacks)
 		return ;
 	backup = a[0];
 	i = 0;
-	while (stacks->a_size - i)
+	while (i < (stacks->a_size - 1))
 	{
 		a[i] = a[i + 1];
 		i++;
 	}
 	stacks->a_size--;
-	a[i - 1] = 0;
 	i = 0;
 	j = stacks->b_size;
 	while (stacks->b_size - i)

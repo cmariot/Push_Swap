@@ -6,7 +6,7 @@
 #    By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/27 18:57:32 by cmariot           #+#    #+#              #
-#    Updated: 2021/08/26 03:55:46 by cmariot          ###   ########.fr        #
+#    Updated: 2021/09/16 09:45:15 by cmariot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,7 +73,7 @@ BONUS_OBJS = ${BONUS_SRCS:.c=.o}
 RM = rm -rf
 
 .c.o:
-			@${CC} ${CCFLAGS} -c $< -o ${<:.c=.o}
+			@${CC} ${CCFLAGS} -c $< -o ${<:.c=.o} -g
 
 all:		${NAME}
 

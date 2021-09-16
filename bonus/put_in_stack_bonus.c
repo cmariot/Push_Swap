@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 23:49:40 by cmariot           #+#    #+#             */
-/*   Updated: 2021/09/15 15:07:58 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/09/16 10:43:36 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,27 +15,27 @@
 /* Compare the instructions and execute the corresponding function */
 int	do_instruction(char *instr, int *a, int *b, t_stack *stacks)
 {
-	if (ft_strncmp(instr, "sa", (ft_strlen(instr) - 1)) == 0)
+	if (ft_strcmp(instr, "sa\n") == 0)
 		sa_checker(a, stacks);
-	else if (ft_strncmp(instr, "sb", (ft_strlen(instr) - 1)) == 0)
+	else if (ft_strcmp(instr, "sb\n") == 0)
 		sb_checker(b, stacks);
-	else if (ft_strncmp(instr, "ss", (ft_strlen(instr) - 1)) == 0)
+	else if (ft_strcmp(instr, "ss\n") == 0)
 		ss_checker(a, b, stacks);
-	else if (ft_strncmp(instr, "pa", (ft_strlen(instr) - 1)) == 0)
+	else if (ft_strcmp(instr, "pa\n") == 0)
 		pa_checker(a, b, stacks);
-	else if (ft_strncmp(instr, "pb", (ft_strlen(instr) - 1)) == 0)
+	else if (ft_strcmp(instr, "pb\n") == 0)
 		pb_checker(a, b, stacks);
-	else if (ft_strncmp(instr, "ra", (ft_strlen(instr) - 1)) == 0)
+	else if (ft_strcmp(instr, "ra\n") == 0)
 		ra_checker(a, stacks);
-	else if (ft_strncmp(instr, "rb", (ft_strlen(instr) - 1)) == 0)
+	else if (ft_strcmp(instr, "rb\n") == 0)
 		rb_checker(b, stacks);
-	else if (ft_strncmp(instr, "rr", (ft_strlen(instr) - 1)) == 0)
+	else if (ft_strcmp(instr, "rr\n") == 0)
 		rr_checker(a, b, stacks);
-	else if (ft_strncmp(instr, "rra", (ft_strlen(instr) - 1)) == 0)
+	else if (ft_strcmp(instr, "rra\n") == 0)
 		rra_checker(a, stacks);
-	else if (ft_strncmp(instr, "rrb", (ft_strlen(instr) - 1)) == 0)
+	else if (ft_strcmp(instr, "rrb\n") == 0)
 		rrb_checker(b, stacks);
-	else if (ft_strncmp(instr, "rrr", (ft_strlen(instr) - 1)) == 0)
+	else if (ft_strcmp(instr, "rrr\n") == 0)
 		rrr_checker(a, b, stacks);
 	else
 		return (-1);
@@ -101,7 +101,7 @@ int	ft_put_in_stack(int *a, int *b, char **argv, int j)
 	int	stack_size;
 
 	stack_size = 0;
-	while (argv[stack_size] != NULL)
+	while (argv[stack_size])
 		stack_size++;
 	if (j == 0)
 		stack_size--;

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_stacks.c                                     :+:      :+:    :+:   */
+/*   check_stacks_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 15:17:34 by cmariot           #+#    #+#             */
-/*   Updated: 2021/08/23 21:37:31 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/09/16 10:12:13 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	check_duplication(int *a, int stack_size)
 	zero = ft_check_zeros(a, stack_size);
 	if (zero > 1 || zero == -1)
 		return (-1);
-	while (a[i + 1])
+	while (i < stack_size)
 	{
 		j = i + 1;
 		while (j < stack_size)
