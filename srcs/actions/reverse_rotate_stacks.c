@@ -1,47 +1,59 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap_stacks.c                                      :+:      :+:    :+:   */
+/*   reverse_rotate_stacks.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 12:27:24 by cmariot           #+#    #+#             */
-/*   Updated: 2021/08/13 12:09:07 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/09/16 18:23:46 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-//swap the first 2 elements at the top of stack a.
-void	sa(int *a, t_stack *stacks)
+//shift down all elements of stack a by 1.
+//1 2 3 4 5 -> 5 1 2 3 4
+void	rra(int *a, t_stack *stacks)
 {
-	int	tmp;
+	int	i;
+	int	backup;
 
 	if (stacks->a_size < 2)
 		return ;
-	tmp = a[0];
-	a[0] = a[1];
-	a[1] = tmp;
-	ft_putstr("sa\n");
+	i = stacks->a_size - 1;
+	backup = a[i];
+	while (i != 0)
+	{
+		a[i] = a[i - 1];
+		i--;
+	}
+	a[0] = backup;
+	ft_putstr("rra\n");
 }
 
-//swap the first 2 elements at the top of stack b.
-void	sb(int *b, t_stack *stacks)
+//shift down all elements of stack b by 1.
+void	rrb(int *b, t_stack *stacks)
 {
-	int	tmp;
+	int	i;
+	int	backup;
 
 	if (stacks->b_size < 2)
 		return ;
-	tmp = b[0];
-	b[0] = b[1];
-	b[1] = tmp;
-	ft_putstr("sb\n");
+	i = stacks->b_size - 1;
+	backup = b[i];
+	while (i != 0)
+	{
+		b[i] = b[i - 1];
+		i--;
+	}
+	b[0] = backup;
+	ft_putstr("rrb\n");
 }
 
-//sa and sb at the same time.
-void	ss(int *a, int *b, t_stack *stacks)
+//rra and rrb at the same time.
+void	rrr(int *a, int *b, t_stack *stacks)
 {
-	sa(a, stacks);
-	sb(b, stacks);
-	ft_putstr("ss\n");
+	rra(a, stacks);
+	rrb(b, stacks);
 }

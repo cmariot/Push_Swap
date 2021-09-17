@@ -6,14 +6,14 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/15 12:41:38 by cmariot           #+#    #+#             */
-/*   Updated: 2021/08/26 02:59:10 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/09/16 22:38:14 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 /* Bubble sort algorithm */
-void	ft_sort_stack(int *stack, int size)
+void	bubble_sort(int *stack, int size)
 {
 	int	i;
 	int	j;
@@ -64,7 +64,7 @@ void	simplify_stack(int *a, int size)
 	int	j;
 
 	c = copy_stack(a, size);
-	ft_sort_stack(c, size);
+	bubble_sort(c, size);
 	i = 0;
 	while (i < size)
 	{
