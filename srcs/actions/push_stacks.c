@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 23:01:22 by cmariot           #+#    #+#             */
-/*   Updated: 2021/09/17 16:02:23 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/09/17 16:18:40 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,10 @@ void	pa(int *a, int *b, t_stack *stacks)
 	stacks->b_size--;
 	i = 0;
 	j = stacks->a_size;
-	while (stacks->a_size - i)
+	while (stacks->a_size - i++)
 	{
 		a[j] = a[j - 1];
 		j--;
-		i++;
 	}
 	a[0] = backup;
 	stacks->a_size++;
@@ -63,11 +62,10 @@ void	pb(int *a, int *b, t_stack *stacks)
 	stacks->a_size--;
 	i = 0;
 	j = stacks->b_size;
-	while (stacks->b_size - i)
+	while (stacks->b_size - i++)
 	{
 		b[j] = b[j - 1];
 		j--;
-		i++;
 	}
 	b[0] = backup;
 	stacks->b_size++;
