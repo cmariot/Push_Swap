@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 15:17:34 by cmariot           #+#    #+#             */
-/*   Updated: 2021/09/16 10:12:13 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/09/17 11:17:58 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ int	is_empty(int *b, int stack_size)
 {
 	int	i;
 
+	printf("B_SIZE = %d\n", stack_size);
 	i = 0;
 	while (i != stack_size)
 		if (b[i++] != '\0')
@@ -99,10 +100,12 @@ int	check_stacks(int *a, int *b, int stack_size)
 	size = stack_size;
 	if (is_empty(b, stack_size) == -1)
 	{
+		printf("The b stack is not empty\n");
 		ft_putstr_fd("KO\n", 1);
 	}
 	else if (is_sorted(a, size) == -1)
 	{
+		printf("The a stack is not sorted\n");
 		ft_putstr_fd("KO\n", 1);
 	}
 	else

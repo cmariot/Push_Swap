@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 11:32:56 by cmariot           #+#    #+#             */
-/*   Updated: 2021/09/16 22:16:14 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/09/17 11:16:24 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void	split_argv(char *str, int **a, int **b)
 		if (isnt_sort(*a, stack_size))
 			sort_stack(*a, *b, stack_size);
 	ft_free_array(arr);
-	ft_putstack(*a, 'A', stack_size);
 }
 
 /* Push swap's main */
@@ -64,7 +63,6 @@ int	main(int argc, char **argv)
 		if (put_in_stack(a, b, argv, 0))
 			if (isnt_sort(a, stack_size))
 				sort_stack(a, b, stack_size);
-		ft_putstack(a, 'A', stack_size);
 	}
 	free(a);
 	free(b);

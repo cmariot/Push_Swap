@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 18:40:40 by cmariot           #+#    #+#             */
-/*   Updated: 2021/09/16 17:09:43 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/09/17 11:13:36 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,14 @@ int	main(int argc, char **argv)
 		if (!b)
 			return (-1);
 		if (ft_put_in_stack(a, b, argv, 0) == 1)
+		{
+			printf("PUT_IN_STACK OK\n");
 			if (get_instructions(a, b, stack_size) != -1)
+			{
+				printf("GET_INSTRUCTION OK\n");
 				check_stacks(a, b, stack_size);
+			}
+		}
 		free(a);
 		free(b);
 	}

@@ -6,7 +6,7 @@
 #    By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/10 10:00:43 by cmariot           #+#    #+#              #
-#    Updated: 2021/09/16 23:05:28 by cmariot          ###   ########.fr        #
+#    Updated: 2021/09/17 11:11:35 by cmariot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,10 +42,10 @@ CHECKER_SRCS_OBJS = ${CHECKER_SRCS:.c=.o}
 CHECKER_SRCS = ${CHECKER_DIR}/main.c \
 			   ${CHECKER_DIR}/put_in_stack_bonus.c \
 			   ${CHECKER_DIR}/check_stacks_bonus.c \
-			   ${CHECKER_DIR}/swap_stacks_bonus.c \
-			   ${CHECKER_DIR}/push_stacks_bonus.c \
-			   ${CHECKER_DIR}/rotate_stacks_bonus.c \
-			   ${CHECKER_DIR}/reverse_rotate_stacks_bonus.c
+			   ${CHECKER_DIR}/actions/reverse_rotate_stacks_bonus.c \
+			   ${CHECKER_DIR}/actions/rotate_stacks_bonus.c \
+			   ${CHECKER_DIR}/actions/swap_stacks_bonus.c \
+			   ${CHECKER_DIR}/actions/push_stacks_bonus.c
 
 
 #### LIBFT ####
