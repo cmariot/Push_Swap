@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 13:32:07 by cmariot           #+#    #+#             */
-/*   Updated: 2021/09/16 22:35:24 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/09/17 14:10:18 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	sort_five(int *a, int *b, t_stack *stacks)
 		else
 			ra(a, stacks);
 	}
-	if (isnt_sort(a, stacks->a_size) == -1)
+	if (isnt_sort(a, stacks->a_size))
 		sort_three(a, stacks);
 	if (b[0] < b[1])
 		sb(b, stacks);

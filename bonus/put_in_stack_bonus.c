@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 23:49:40 by cmariot           #+#    #+#             */
-/*   Updated: 2021/09/17 11:15:40 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/09/17 15:20:52 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,7 @@ int	get_instructions(int *a, int *b, int stack_size)
 		if (instruction == NULL)
 			break ;
 		if (do_instruction(instruction, a, b, stacks) == -1)
-		{
-			printf("Erreur : [%s]\n", instruction);
 			error++;
-		}
 		free(instruction);
 	}
 	free(stacks);

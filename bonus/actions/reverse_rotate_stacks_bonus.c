@@ -6,11 +6,11 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 12:27:24 by cmariot           #+#    #+#             */
-/*   Updated: 2021/08/13 12:17:30 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/09/17 14:23:26 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap_checker.h"
+#include "push_swap.h"
 
 //shift down all elements of stack a by 1.
 //1 2 3 4 5 -> 5 1 2 3 4

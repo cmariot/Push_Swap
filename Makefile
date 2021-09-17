@@ -6,11 +6,11 @@
 #    By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/10 10:00:43 by cmariot           #+#    #+#              #
-#    Updated: 2021/09/17 11:11:35 by cmariot          ###   ########.fr        #
+#    Updated: 2021/09/17 15:00:57 by cmariot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-ARG = 2 1 3 5 0 4
+ARG = 3 1 4 0 2 
 
 #### PUSH SWAP ###
 
@@ -107,16 +107,16 @@ checker_leaks:	checker_compil
 #### RANDOM NUMBER GENERATOR ####
 
 random_500:
-				@seq -250 249 | sort -R | tr "\n" " "; echo
+				@seq 1 500 | sort -R | tr "\n" " "; echo
 
 random_100:
-				@seq 0 100 | sort -R | tr "\n" " "; echo
+				@seq 1 100 | sort -R | tr "\n" " "; echo
 
 random_5:
-				@seq 0 5 | sort -R | tr "\n" " "; echo
+				@seq 1 5 | sort -R | tr "\n" " "; echo
 
 random_3:
-				@seq 0 3 | sort -R | tr "\n" " "; echo
+				@seq 1 3 | sort -R | tr "\n" " "; echo
 
 
 #### BOTH RULES ####

@@ -6,11 +6,11 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 12:27:24 by cmariot           #+#    #+#             */
-/*   Updated: 2021/08/13 12:16:49 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/09/17 14:22:44 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap_checker.h"
+#include "push_swap.h"
 
 //swap the first 2 elements at the top of stack a.
 void	sa_checker(int *a, t_stack *stacks)
