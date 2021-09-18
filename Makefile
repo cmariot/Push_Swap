@@ -6,11 +6,10 @@
 #    By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/10 10:00:43 by cmariot           #+#    #+#              #
-#    Updated: 2021/09/17 15:00:57 by cmariot          ###   ########.fr        #
+#    Updated: 2021/09/17 17:15:00 by cmariot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-ARG = 3 1 4 0 2 
 
 #### PUSH SWAP ###
 
@@ -31,6 +30,11 @@ PROGRAM_SRCS = ${PROGRAM_DIR}/main.c \
 			   ${PROGRAM_DIR}/actions/reverse_rotate_stacks.c
 
 
+#### TEST ####
+
+ARG = 3 1 4 0 2 
+
+
 #### CHECKER ####
 
 CHECKER = checker
@@ -48,14 +52,6 @@ CHECKER_SRCS = ${CHECKER_DIR}/main.c \
 			   ${CHECKER_DIR}/actions/push_stacks_bonus.c
 
 
-#### LIBFT ####
-
-LIBFT_DIR = libft
-
-compil_libft:
-				@cd ${LIBFT_DIR} && make
-
-
 ### COMPILATION ###
 
 COMPILER = gcc
@@ -67,7 +63,7 @@ INCLUDES_DIR = includes
 REMOVE = rm -rf
 
 .c.o:
-				${COMPILER} ${COMPILER_FLAGS} -g -c $< -o ${<:.c=.o} -I ${INCLUDES_DIR} -I ${LIBFT_DIR}
+				@${COMPILER} ${COMPILER_FLAGS} -g -c $< -o ${<:.c=.o} -I ${INCLUDES_DIR} -I ${LIBFT_DIR}
 
 
 #### PUSH SWAP RULES ####
@@ -75,7 +71,7 @@ REMOVE = rm -rf
 ${PROGRAM}:		program_compil
 
 program_compil: compil_libft ${PROGRAM_SRCS_OBJS}
-				${COMPILER} ${COMPILER_FLAGS} ${PROGRAM_SRCS_OBJS} -I ${INCLUDES_DIR} -L ${LIBFT_DIR} -lft -o ${PROGRAM}
+				@${COMPILER} ${COMPILER_FLAGS} ${PROGRAM_SRCS_OBJS} -I ${INCLUDES_DIR} -L ${LIBFT_DIR} -lft -o ${PROGRAM}
 				@printf "The push_swap program is ready.\n"
 
 test:			program_compil
@@ -83,10 +79,18 @@ test:			program_compil
 
 count:			checker_compil
 				@printf "Total number of instructions : "
-				@./${PROGRAM} ${ARG} | wc -l
+				./${PROGRAM} ${ARG} | wc -l
 
 program_leaks:	program_compil
 				valgrind --leak-check=full ./${PROGRAM} ${ARG}
+
+
+#### LIBFT ####
+
+LIBFT_DIR = libft
+
+compil_libft:
+				@cd ${LIBFT_DIR} && make
 
 
 #### CHECKER RULES ####
