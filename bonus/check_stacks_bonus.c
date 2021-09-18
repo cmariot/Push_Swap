@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 15:17:34 by cmariot           #+#    #+#             */
-/*   Updated: 2021/09/17 16:15:20 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/09/18 12:24:53 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,23 +55,8 @@ int	check_duplication(int *a, int stack_size)
 	return (0);
 }
 
-/* Check if the stack b is empty */
-int	is_empty(int *b, int stack_size)
-{
-	int	i;
-
-	i = 0;
-	while (i < stack_size)
-	{
-		if (b[i] != 0)
-			return (-1);
-		i++;
-	}
-	return (0);
-}
-
 /* Check if the stack a is sorted, smallest to bigger */
-int	is_sorted(int *a, int stack_size)
+int	a_isnt_sort(int *a, int stack_size)
 {
 	int	i;
 	int	check_zero;
@@ -81,16 +66,31 @@ int	is_sorted(int *a, int stack_size)
 	while (a[i] < 0)
 	{
 		if (a[i] >= a[i + 1])
-			return (-1);
+			return (1);
 		stack_size--;
 		i++;
 	}	
 	if (check_zero == 1 && a[i] != 0)
-		return (-1);
-	while ((stack_size-- - 1) && (a[i + 1] != '\0'))
+		return (1);
+	while ((stack_size-- - 1) && (a[i + 1] != 0))
 	{
 		if (a[i] >= a[i + 1])
-			return (-1);
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+/* Check if the stack b is empty */
+int	b_isnt_empty(int *b, int stack_size)
+{
+	int	i;
+
+	i = 0;
+	while (i < stack_size)
+	{
+		if (b[i] != 0)
+			return (1);
 		i++;
 	}
 	return (0);
@@ -102,11 +102,11 @@ int	check_stacks(int *a, int *b, int stack_size)
 	int	size;
 
 	size = stack_size;
-	if (is_empty(b, stack_size) == -1)
+	if (b_isnt_empty(b, stack_size))
 	{
 		ft_putstr_fd("KO\n", 1);
 	}
-	else if (is_sorted(a, size) == -1)
+	else if (a_isnt_sort(a, size))
 	{
 		ft_putstr_fd("KO\n", 1);
 	}

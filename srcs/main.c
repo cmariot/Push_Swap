@@ -6,7 +6,7 @@
 /*   By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 11:32:56 by cmariot           #+#    #+#             */
-/*   Updated: 2021/09/17 15:15:17 by cmariot          ###   ########.fr       */
+/*   Updated: 2021/09/18 12:10:11 by cmariot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,8 @@ int	main(int argc, char **argv)
 		if (create_stacks(&a, &b, stack_size) != 2)
 			return (-1);
 		if (put_in_stack(a, b, argv, 0))
-		{
 			if (isnt_sort(a, stack_size) != 0)
 				sort_stack(a, b, stack_size);
-		}
 	}
 	free(a);
 	free(b);

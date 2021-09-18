@@ -6,7 +6,7 @@
 #    By: cmariot <cmariot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/10 10:00:43 by cmariot           #+#    #+#              #
-#    Updated: 2021/09/17 17:15:00 by cmariot          ###   ########.fr        #
+#    Updated: 2021/09/18 12:26:08 by cmariot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,8 +43,9 @@ CHECKER_DIR = bonus
 
 CHECKER_SRCS_OBJS = ${CHECKER_SRCS:.c=.o}
 
-CHECKER_SRCS = ${CHECKER_DIR}/main.c \
+CHECKER_SRCS = ${CHECKER_DIR}/main_bonus.c \
 			   ${CHECKER_DIR}/put_in_stack_bonus.c \
+			   ${CHECKER_DIR}/do_instructions_bonus.c \
 			   ${CHECKER_DIR}/check_stacks_bonus.c \
 			   ${CHECKER_DIR}/actions/reverse_rotate_stacks_bonus.c \
 			   ${CHECKER_DIR}/actions/rotate_stacks_bonus.c \
